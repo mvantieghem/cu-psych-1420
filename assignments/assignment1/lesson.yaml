@@ -114,3 +114,22 @@
   CorrectAnswer: Yes
   AnswerTests: omnitest(correctVal = 'Yes')
   
+- Class: mult_question
+  Output: Does str() tell you the data types of the columns in a dataframe?
+  AnswerChoices: Yes; No
+  CorrectAnswer: Yes
+  AnswerTests: omnitest(correctVal = 'Yes')
+  
+- Class: mult_question
+  Output: Does str() tell you how many rows are in a dataframe?
+  AnswerChoices: Yes; No
+  CorrectAnswer: Yes
+  AnswerTests: omnitest(correctVal = 'Yes')
+  
+- Class: text
+  Output: 'The next exploring function you''ll use is head().'
+  
+- Class: text
+  Output: 'head() prints out the first few rows of a dataframe, so you can peek at what the data look like.'
+  
+  
