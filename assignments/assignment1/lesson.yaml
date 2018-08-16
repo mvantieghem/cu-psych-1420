@@ -1,0 +1,116 @@
+- Class: meta
+  Course: assignments
+  Lesson: assignment1
+  Author: Katherine Fox-Glassman, Monica Thieu
+  Type: Standard
+  Organization: Columbia University Dept of Psychology
+  Version: 2.4.3
+
+- Class: text
+  Output: 'Any text after a # is not read by R until a carriage return. (a carriage return is a new line)'
+  
+- Class: text
+  Output: 'If you want to make notes for yourself, put them after a #.'
+  
+- Class: text
+  Output: 'RStudio shows this kind of "comment text" in another color.'
+  
+- Class: text
+  Output: 'Tip: To comment multiple lines of code, highlight them and type ctrl[/command] + shift + C. Anything that''s on its own (un-commented) line will get run.'
+
+- Class: cmd_question
+  Output: Enter 2 + 2 to see what R calculates for the answer.
+  CorrectAnswer: 2 + 2
+  AnswerTests: omnitest(correctExpr='2 + 2')
+  Hint: Type a hint.
+  
+- Class: text
+  Output: 'First we want to tell R where to find the data files we''ll be using.'
+  
+- Class: cmd_question
+  Output: 'Ask R "what is the current working directory?" by calling the function getwd()'
+  CorrectAnswer: getwd()
+  AnswerTests: omnitest(correctExpr = 'getwd()')
+  Hint: Type getwd() into your console, and press Enter to run it and see what it tells you.
+
+- Class: text
+  Output: 'You should see a file path as the output of getwd(). This tells you the folder on your computer that R is currently "inside".'
+
+- Class: text
+  Output: 'Before working with data, we need to read it into R''s environment.'
+
+- Class: text
+  Output: First, make sure you know where the dataset is saved. It should be in the your current working directory, and saved in .csv format.
+  
+- Class: cmd_question
+  Output: Ask R to show you all the files in your current working directory by calling the function list.files()
+  CorrectAnswer: list.files()
+  AnswerTests: omnitest(correctExpr = 'list.files()')
+  Hint: Type list.files() into your console, and press Enter to run it and see what it tells you.
+
+- Class: text
+  Output: 'You should see a series of file names in the output. Make sure there is a file that ends in .csv, as that''s the data file we''ll be loading.'
+
+- Class: text
+  Output: 'We''ll use the function read.csv() to read data from this CSV file into R.'
+  
+- Class: text
+  Output: 'We need to tell read.csv() which file we want to read data from. We will do this by putting the name of the file inside the parentheses of read.csv() so that it knows where to look for the data.'
+
+- Class: text
+  Output: 'We also need to tell R to store the info from the file in an R object so we can work with the data.'
+
+- Class: text
+  Output: 'We''ll do this using the left-arrow operator, <- , to take the data on the RIGHT side, and save it into the label name on the LEFT side.'
+
+- Class: text
+  Output: 'Then, whenever we want to access the data, we just need to tell R the label name and the data will be there.'
+
+- Class: cmd_question
+  Output: 'Read this CSV data file into R by entering the following command: TDM <- read.csv("classdata_2017.csv")'
+  CorrectAnswer: TDM <- read.csv("classdata_2017.csv")
+  AnswerTests: omnitest(correctExpr = 'TDM <- read.csv("classdata_2017.csv")')
+  Hint: 'Copy the following command and press Enter to run: TDM <- read.csv("classdata_2017.csv")'
+
+- Class: text
+  Output: 'We just read in the data saved in classdata_2017.csv, and used the left arrow <- to assign that data to the label TDM.'
+
+- Class: text
+  Output: 'R is case sensitive, so the label tdm is not the same as the label TDM.'
+
+- Class: text
+  Output: 'Our convention will be to label data frames with capital letters, and variables in lowercase.'
+
+- Class: text
+  Output: 'Next, we''ll learn about functions that help you explore your data. Sometimes, you''ll use these to make sure your data read in correctly, and sometimes you''ll use these simply to inspect your data so you know what''s in it.'
+
+- Class: text
+  Output: 'The first exploring function you''ll use is str().'
+  
+- Class: text
+  Output: 'str() tells you the following things about an object:'
+  
+- Class: text
+  Output: 'the type of object that TDM is'
+
+- Class: text
+  Output: 'the number of observations and number of variables (dimensions) of TDM'
+
+- Class: text
+  Output: 'a list of each variable and its class (TDMerval, factor, numeric, etc.)'
+
+- Class: text
+  Output: 'for each variable, a list of all values'
+  
+- Class: cmd_question
+  Output: 'Enter the following command and inspect the output: str(TDM)'
+  CorrectAnswer: str(TDM)
+  AnswerTests: omnitest(correctExpr = 'str(TDM)')
+  Hint: 'Copy the following command and press Enter to run: str(TDM)'
+
+- Class: mult_question
+  Output: Does str() tell you the names of the columns in a dataframe?
+  AnswerChoices: Yes; No
+  CorrectAnswer: Yes
+  AnswerTests: omnitest(correctVal = 'Yes')
+  
