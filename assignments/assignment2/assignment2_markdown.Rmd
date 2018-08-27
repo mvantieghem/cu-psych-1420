@@ -1,0 +1,13 @@
+---
+title: "Psych 1490, Assignment 2"
+author: "Monica Thieu"
+date: "August 27, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(ggplot2)
+```
+
+
