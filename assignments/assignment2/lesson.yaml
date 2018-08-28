@@ -1,7 +1,44 @@
 - Class: meta
   Course: assignments
   Lesson: assignment2
-  Author: your name goes here
+  Author: Katherine Fox-Glassman, Monica Thieu
   Type: Standard
-  Organization: your organization's name goes here
+  Organization: Columbia University Dept of Psychology
   Version: 2.4.3
+
+- Class: text
+  Output: 'For Assignment 2, you''ll be doing your work in an R Markdown document.'
+
+- Class: text
+  Output: 'This is a special kind of R document that lets you write R code and print out R results & graphs in the same document as normal text.'
+  
+- Class: text
+  Output: 'R Markdowns can be exported as HTML and PDF so you can share your completed homework assignments, analysis results, etc. with anyone, even if they don''t have access to your data.'
+
+- Class: text
+  Output: 'By opening this Swirl lesson, the packages you''ll need for Assignment 2 should have automatically been downloaded onto your computer.'
+
+- Class: text
+  Output: 'Right now, let''s check to make sure these packages have downloaded correctly.'
+  
+- Class: cmd_question
+  Output: 'The first package we''ll check is knitr, the package used to export R Markdown documents. Copy the following code and run it: require(knitr)'
+  CorrectAnswer: require(knitr)
+  AnswerTests: omnitest(correctExpr = 'require(knitr)')
+  Hint: 'Copy the following command and run it: require(knitr)'
+  
+- Class: text
+  Output: 'If you received no messages, you''re all set! If you received a WARNING message after running that command, which says "there is no package called knitr", please inform your TA.'
+  
+- Class: cmd_question
+  Output: 'The second package we''ll check is ggplot2, which we''ll use to graph our data. Copy the following code and run it: require(ggplot2)'
+  CorrectAnswer: require(ggplot2)
+  AnswerTests: omnitest(correctExpr = 'require(ggplot2)')
+  Hint: 'Copy the following command and run it: require(ggplot2)'
+  
+- Class: text
+  Output: 'Again, if you received no messages, the package is installed properly. If you received a WARNING message after running that command, which says "there is no package called ggplot2", please inform your TA.'
+  
+- Class: text
+  Output: 'Now, this lesson will exit, and we''ll switch over to writing code in the R Markdown document for the rest of the assignment.'
+  
