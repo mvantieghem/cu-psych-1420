@@ -5,9 +5,534 @@ date: "August 27, 2018"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-require(ggplot2)
+
+# Determine pkg installation status and load
+if (!require(ggplot2)) {
+  install.packages(ggplot2)
+} else {
+  require(ggplot2)
+}
+```
+
+# 0.
+
+While R can do a lot of amazing stuff on its own, some special types of analysis or graphing can be more easily (or stylishly) done using one of a (huge) number of "packages" that people have created specially for R. Think of R as your phone, and the packages as apps that each allow the phone to do something extra.
+
+To use a package, you have to install it (once), and then load it (every time you re-open RStudio). Running the Swirl lesson for assignment 2 should have automatically installed a couple packages for you that you'll need for this lesson.
+
+# 1.
+
+Check your working directory using `getwd()`. If you opened RStudio via the R project file in the same directory that contains your datafile (classdata_2017.csv) and your R scripts, you should be in that folder now.
+
+
+# 2.
+
+Read in your data file using `read.csv("classdata_2017.csv")`, and assign it to the dataframe name `TDM`.
+
+```{r}
+# Code goes here
+
+```
+
+# 3.
+
+Use the following exploration functions to check that the dataframe `TDM` read in correctly:
+
+`head()`
+ 
+```{r}
+# Code goes here
+
+```
+ 
+`summary()`
+ 
+```{r}
+# Code goes here
+
+```
+ 
+`str()`
+ 
+```{r}
+# Code goes here
+
+```
+
+# 4.
+
+Calculating variables from the Regret and Maximization scales:
+
+Use the code you wrote in your Project 1 to create a new variable for overall Regret score in the `TDM` dataframe called `regret_total`.
+
+```{r}
+# Code goes here
+
+```
+
+You'll take a similar approach to calculating an overall Maximizing score from the six items we took from the short version of the Maximizing Scale. They are called `maxi1`, `maxi2`, `maxi3`, etc.
+
+First, assign a new variable called `maxi_total` that is the average of all six `maxi` scores (if you need help, see Project 1's code for calculating the mean regret score).
+
+```{r}
+# Code goes here
+
+```
+
+The Maximizing Scale has been shown to divide up into three subscales:
+
+* Alternative Search (`maxi1` & `maxi3`)
+* Decision Difficulty (`maxi2` & `maxi5`)
+* High Standards (`maxi4` & `maxi6`)
+
+Please assign three new variables in the `TDM` dataframe, each of which represents one subscale: `maxi_as`, `maxi_dd`, and `maxi_hs`. (Hint: you should be averaging the two scores for each.)
+
+```{r}
+# Code goes here
+
+```
+
+# 5.
+
+Use `head()` to check that the following new variables are present in `TDM`:
+
+* `regret_total`
+* `maxi_total`
+* `maxi_as`, `maxi_dd`, & `maxi_hs`
+
+```{r}
+# Code goes here
+
+```
+
+# 6.
+
+Now we can start doing some real data analysis! For the purposes of getting practice in a variety of inferential statistics in R, we'll be running more exploratory tests than would normally be considered wise for a real study. We'll talk more about why this is a problem later in the semester, but hopefully in your stats class you talked about the dangers of running too many tests--i.e., alpha-inflation.
+
+Let's start with some simple descriptive statistics on our new variables. Use `mean()` and `sd()` to find the mean and standard deviations for:
+
+total regret
+
+```{r}
+# Code goes here
+
+```
+
+total maximizing
+
+```{r}
+# Code goes here
+
+```
+
+each of the maxi subscales. 
+
+```{r}
+# Code goes here
+
+```
+
+Use `hist()` to visualize the range of scores for each of the variables above.
+
+```{r}
+# Code goes here
+
+```
+
+```{r}
+# Code goes here
+
+```
+
+```{r}
+# Code goes here
+
+```
+
+Use `summary()` to get a summary of some of our _categorical_ variables (variables that are not numeric, but rather can take on one of a few specified categories):
+
+`class`
+
+```{r}
+# Code goes here
+
+```
+
+`school`
+
+```{r}
+# Code goes here
+
+```
+
+`gender`
+
+```{r}
+# Code goes here
+
+```
+
+`handed`
+
+```{r}
+# Code goes here
+
+```
+
+Explore at least **5** other variables that you think might have a relationship with maximizing and/or regret. If the variable is _numeric_ or _interval_ (i.e., if its responses are numbers), compute the mean and sd, and produce a histogram. If the variable is _categorical_, produce a summary.
+
+```{r}
+# Code goes here
+
+```
+
+```{r}
+# Code goes here
+
+```
+
+```{r}
+# Code goes here
+
+```
+
+```{r}
+# Code goes here
+
+```
+
+```{r}
+# Code goes here
+
+```
+
+# 7.
+
+Now that you have a sense for what the data show, let's look at how some of the variables relate to each other. First, some correlations.
+
+## a.
+
+Let's see if age correlates with birthyear (it should!). The function `cor.test()` allows us to put in two variables, see what their correlation is, and return a p-value for that correlation.
+
+`cor.test()` allows you to run a Pearson, Kendall, or Spearman correlation, depending on what you tell it to do using the argument `method`. This time, since we just want to do a Pearson correlation, we'll use `method = "pearson"`.
+
+First, we'll save the contents of our correlation test into the variable `cor_age_birthyear` so we can access its contents later. Then, we'll print `cor_age_birthyear` to the console, so we can visually inspect the results of the correlation test.
+
+```{r}
+cor_age_birthyear <- cor.test(TDM$age, TDM$birthyear, method = "pearson")
+
+cor_age_birthyear
+```
+
+Above, you can see the r-value, p-value, and several other pieces of info about the correlation test. These statistics are actually saved as variables _inside of_ the correlation test object. To extract these statistics and report them, we can use the dollar sign `$` to index these statistics, similar to indexing columns in a dataframe.
+
+To index the Pearson's r for this test, we can look for the sub-variable called `estimate`:
+
+```{r}
+cor_age_birthyear$estimate
+```
+
+And to index the p-value, we can call the sub-variable `p.value`:
+
+```{r}
+cor_age_birthyear$p.value
+```
+
+Now, we can use these variable names to refer to the Pearson's r and p-value of this correlation test. You don't have to look at the numbers and copy them over!
+
+PS: In RStudio, if you want to know all the sub-variables inside of an object, if you just type the name of the object with a `$` after it, an auto-complete menu should pop up and you can use the up and down arrow keys to look through all the possible sub-variables.
+
+## b.
+
+Let's see if maximizing correlates with regret. Use `cor.test()` on those two variables, and report the Pearson's r and p-value.
+
+```{r}
+# Code goes here
+
+```
+
+```{r}
+# Code goes here
+
+```
+
+```{r}
+# Code goes here
+
+```
+
+Typically, maximizing correlates reasonably strongly with regret (r ~ 0.4). Does this appear to be the case in our dataset? 
+
+## c.
+
+Let's see if maximizing correlates with various measures of course-selection behavior. Calculate the correlation and report the Pearson's r between `maxi_total` and each of the following variables:
+
+`courses_enrolled`
+
+```{r}
+# Code goes here
+
+```
+
+`courses_shopped`
+
+```{r}
+# Code goes here
+
+```
+
+`points_enrolled`
+
+```{r}
+# Code goes here
+
+```
+
+`time_spent`
+
+```{r}
+# Code goes here
+
+```
+
+## d.
+
+Is the regret score, as calculated by the Regret Scale, correlated with our students' self-reports of regret (`process_regret` and `outcome_regret`)?
+
+```{r}
+# Code goes here
+
+```
+
+```{r}
+# Code goes here
+
+```
+
+What about `regret_general`?
+
+```{r}
+# Code goes here
+
+```
+
+## e.
+
+Is the score on the Maximizing Scale related to the self-report of tendency to maximize (`maxi_general`)?
+
+```{r}
+# Code goes here
+
+```
+
+# 8. T-tests
+
+We use t-tests to determine if two samples likely come from different populations. Of course, means will always differ somewhat, even if two samples are drawn from the same population. When the t-value is high enough, we conclude that it's unlikely that the two samples actually represent the same population.
+
+The R syntax for a Student's t-test is `t.test(dv ~ iv, data = DataFrame)`. Note that because we're defining the dataframe (for today's assignment, TDM) within the test, we don't need to dollar-sign index it in the names of the DV and IV variables. We can just use the variable name on its own (for example, inside this function, if age were our DV, we only need to call `age`, not `TDM$age`, because `t.test()` already knows to look inside of `TDM`.)
+
+## a. 
+
+Let's start by seeing if our subjects show a difference in age based on handedness. (They shouldn't!)
+
+Note: t-tests can only be run on **two groups.** If there was someone ambidextrous in the dataset, we want to ignore their observations. We can do this by telling R to run on the dataset TDM, but omitting all rows belonging to people whose handedness is ambidextrous.
+
+```{r}
+t_age_handed <- t.test(age ~ handed, data = TDM[!is.na(TDM$handed), ])
+
+t_age_handed
+```
+
+Similarly to `cor.test` objects, if you save the output of `t.test()` into a variable, you can dollar-sign index into its sub-variables to access the estimated means, t-value, p-value, etc. from the test.
+
+```{r}
+t_age_handed$estimate
+```
+
+```{r}
+t_age_handed$statistic
+```
+
+```{r}
+t_age_handed$p.value
 ```
 
 
+## b.
+
+What about regret--does it differ by gender?
+
+```{r}
+# Code goes here
+
+```
+
+
+## c.
+
+Does tendency to maximize differ by gender?
+
+```{r}
+# Code goes here
+
+```
+
+## d.
+
+It might be reasonable to expect that people who made their course decisions using a calculation-based mode are more likely to be maximizers than those who used an affect- or rule-based mode. So we should see if there's any difference in maximizing between those who used calculation-based modes and those who didn't.
+
+The question about decision mode allowed for 4 options (calculation, rule, role, and affect). To do a t-test, we need the variable re-coded as calculation vs. not-calculation. To do this, we'll use the `ifelse()` function. The code below tells R to create a new variable (`dec_mode_2`) whose value
+ is `"calc"` if the original variable (`dec_mode`) was calculation-based, and whose value is `"not-calc"` otherwise.
+ 
+Note: Check that the levels of `TDM$dec_mode` are still correct for your dataset using `summary()`.
+
+```{r}
+TDM$dec_mode_2 <- ifelse(TDM$dec_mode == "calculation-based decision mode (e.g., weighing pros and cons of each course against one another)",
+                         "calc",
+                         "not-calc")
+```
+
+Now you can run a t-test just like above, with `dec_mode_2` as the IV and maximizing as the DV.
+
+```{r}
+# Code goes here
+
+```
+
+# 9. Graphing
+
+Time to graph some results! `ggplot2` is a package that helps you make prettier figures in R, using more straightforward syntax. We'll use `ggplot2` to make a scatterplot and a bar graph, but first let's get oriented with how it works.
+
+At the beginning of this lab, you installed the package `ggplot2`. You only have to do that once ever (unless you uninstall it or update the package).
+
+We also loaded the `ggplot2` library, which allows us to quickly access all of its functions, with the `library(ggplot2)` command. You need to do that once every time you open a new R session.
+
+`ggplot2` allows you to format your figures in many cool ways. When working on one complete project, whether it be one homework assignment or one set of research analyses, it's easiest to just define a "theme" one time, and then apply it to every figure in that set of analyses.
+
+We'll create a theme called `bwtheme` (for black & white), which is nice and simple. We'll use some `ggplot2` functions to define this theme and save it into a variable. This way, you can create the theme variable once and then use it over and over on multiple graphs. Run the code below to save our theme into a variable:
+
+```{r}
+bwtheme <- theme_bw() + 
+  theme(strip.background = element_rect(fill = 'white')) +
+  theme(plot.title = element_text(size = rel(1))) + 
+  theme(axis.title = element_text(size = rel(1)))
+```
+
+When you plot data with `ggplot2`, you need to tell it 3 things:
+
+1. what type of plot to make (e.g., scatter, bar chart)
+2. what data to plot (e.g., what variables are your x and y values?)
+3. what extra layers do you want to add (e.g., a regression line)
+
+After you tell `ggplot2` one thing about what you want your plot to look like, if you put a `+` after one plotting call it knows that you have more information to give it about the same plot. 
+
+It's best practice to add a new line after each separate layer of your plotting code, so that each layer's code is easily readable on its own. You can add as many layers to your plotting command as you'd like as long as you end each line with a `+` (except the last line).
+
+For example, to plot a scatterplot of `age` and `birthyear`, you would use:
+
+```{r}
+ggplot(TDM, aes(x = birthyear, y = age)) +
+  geom_point(shape = 1) +
+  bwtheme
+```
+
+The `ggplot()` command defines the dataframe (`TDM`) and the "aesthetics" (the x and y variables you want to use). The `geom_point()` command tells `ggplot2` you want to graph points (aka a scatter plot). `shape = 1` tells `ggplot2` to use open circles for each point. `ggplot2` supports several different point shapes in scatter plots, each labeled by a different number. You can experiment with different shapes by changing the number, if you'd like.
+
+One useful thing to add to a scatterplot is a linear regression line. (The correlation between x and y is the same as a linear regression with only one predictor variable.) We'll do this with `geom_smooth()`.
+
+```{r}
+ggplot(TDM, aes(x = birthyear, y = age)) +
+  geom_point(shape = 1) +
+  geom_smooth(method = lm) +
+  bwtheme
+```
+
+By default, `geom_smooth()` will graph the 95% confidence interval (CI) for your regression line. If you want to omit that line, set the `se` argument of `geom_smooth()` to be `FALSE` to turn the estimated standard error off, like this: `geom_smooth(method = lm, se = FALSE)`
+
+Earlier, you found the correlation between regret and maximizing. Let's graph that now. This time, we'll add a title by adding an additional layer in our `ggplot` call, and we'll also edit the x and y axis labels so that they're a little more informative than our shorthand variable names.
+
+```{r}
+ggplot(TDM, aes(x = maxi_total, y = regret_total)) +
+  geom_point(shape = 1) +
+  geom_smooth(method = lm) +
+  # labs() lets you modify various labels in a ggplot
+  labs(title = "Regret as a Function of Maximizing Tendency",
+       x = "tendency to maximize",
+       y = "tendency toward regret")
+  ylab() +
+  bwtheme
+```
+
+# 10.
+
+Create one more figure that shows the relationship between two _continuous_ variables (or any variables that _aren't categorical_). Make sure your figure has a title, and change the labels on each axis so that someone not familiar with our variable names would understand what the figure represents. 
+You can copy and paste code from the previous sections, above, but remember to change the variable names as needed.
+
+```{r}
+# Code goes here
+
+```
+
+
+# 11.
+
+Now let's make a box plot, which is a clean way to illustrate the centers and spreads of multiple categories (e.g., the two groups you're comparing with a t-test) . We'll graph this in the same way as we made the scatter plot, but this time instead of using `geom_point()` to create a scatter plot we'll use `geom_boxplot()` to generate a box plot.
+
+```{r}
+ggplot(TDM, aes(x = handed, y = age)) +
+  geom_boxplot() +
+  bwtheme  
+```
+
+`geom_boxplot()` shows you the median (middle line of the box), the 25th and 75th percentiles (the bottom and top edges of the box), and +- 1.5 inter-quartile ranges (IQRs) away from the median (the whiskers). Any points farther than 1.5 IQRs from the median are shown as individual points.
+
+If you want to add the points over the boxplots (a good habit, so that your reader can see where the individual values fall, in addition to the summary statistics), you can easily do this by adding another layer on top of `geom_boxplot()` using something like `geom_point(size = 3, alpha = .5)`. The alpha value is opacity (transparency), where larger fractions (closer to 1) are more opaque and lower fractions (closer to 0) are more transparent.
+
+```{r}
+ggplot(TDM, aes(x = handed, y = age)) +
+  geom_boxplot() +
+  geom_point(size = 3, alpha = .3) +
+  bwtheme
+```
+
+If you want to change the order of the x-axis labels, or change their text, you can change these with various arguments within `scale_x_discrete()`. There are several functions you can use to modify the behavior of x-axes and y-axes. In this case, because the x variable is categorical, `scale_x_discrete()` is the appropriate function to use.
+
+```{r}
+ggplot(TDM, aes(x=handed, y=age)) +
+  geom_boxplot() +
+  geom_point(size = 3, alpha = .3) +
+  bwtheme   +
+  scale_x_discrete(limits = c("L", "R", "A"), # limits re-orders the three bars
+                   labels = c("Left", "Right", "Ambi")) # labels changes text. Make sure these are specified in the correct order!
+```
+
+Finally, if making the points transparent doesn't solve the problem of telling overlapping points apart, you can "jitter" the location of each point horizontally by using `geom_jitter()` in place of `geom_point()`. This adds a little bit of random noise to each point's location, which makes it so that points which were on top of each other are now slightly offset.
+
+Below, the `geom_point()` line has been commented out so it won't run. R will skip over it and run the `geom_jitter()` line below it and keep going as usual. If you uncomment `geom_point()` by deleting the #, and instead comment out the `geom_jitter()` line by adding a # in front it, you'll see your partially transparent points again. 
+
+Since both of these commands alter the way points are plotted by `ggplot2`, you should only use _one at a time._
+
+```{r}
+ggplot(TDM, aes(x=handed, y=age)) +
+  geom_boxplot() +
+  # geom_point(size = 3, alpha = .3) +
+  geom_jitter(position=position_jitter(width=.1, height=0)) +
+  bwtheme   +
+  scale_x_discrete(limits=c("L","R","A"),
+                   labels=c("Left", "Right", "Ambi"))
+```
+
+Now, please create one new box plot that shows any of our continuous DVs as a function of one of our categorical variables. Again, make sure your figure has a title, and change the labels on each axis so that someone not familiar with our variable names would understand what the figure represents. 
+
+```{r}
+# Code goes here
+
+```
+
+# Submitting this assignment
+
+When saving an R Markdown, you can either save it as a text-based file so you can keep editing it and running the code inside later, or you can export it as a final document that anyone can read without opening RStudio. Exporting an R Markdown is called "knitting." To knit your file, click the "Knit" button at the top of your Editor pane, and click "Knit to HTML." Once the HTML document finishes exporting, it should save into the same directory as your original R markdown file. Rename this HTML document with a **new filename** that _includes your own name,_ e.g. R_Project_2_Hale_Forster.html or R_Project_2_Maneeza_Dawood.html .
+
+To get credit for this assignment, upload your completed "knitted" HTML to the Assignments section of Canvas for UN1490.
