@@ -7,22 +7,16 @@
   Version: 2.4.3
 
 - Class: text
-  Output: 'Any text after a # is not read by R until a carriage return. (a carriage return is a new line)'
+  Output: 'Welcome! In this first assignment, we''ll be learning about how to navigate R (and RStudio.)'
   
 - Class: text
-  Output: 'If you want to make notes for yourself, put them after a #.'
-  
-- Class: text
-  Output: 'RStudio shows this kind of "comment text" in another color.'
-  
-- Class: text
-  Output: 'Tip: To comment multiple lines of code, highlight them and type ctrl[/command] + shift + C. Anything that''s on its own (un-commented) line will get run.'
+  Output: 'You can use R to do spreadsheet-style table manipulation (like Excel), as well as statistics (like SPSS).'
 
-- Class: cmd_question
-  Output: Enter 2 + 2 to see what R calculates for the answer.
-  CorrectAnswer: 2 + 2
-  AnswerTests: omnitest(correctExpr='2 + 2')
-  Hint: Type a hint.
+- Class: text
+  Output: 'While it takes a little bit more time to get the hang of using R, we hope you''ll find it rewarding, and choose to use it in your future research!'
+  
+- Class: text
+  Output: 'In this assignment, we will learn how to load in a data file, inspect the data, and do some brief calculations on that data.'
   
 - Class: text
   Output: 'First we want to tell R where to find the data files we''ll be using.'
