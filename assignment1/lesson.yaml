@@ -162,9 +162,8 @@
   CorrectAnswer: Yes
   AnswerTests: omnitest(correctVal = 'Yes')
 
-
 - Class: text
-  Output: 'The lawt exploring function you''ll learn about today is summary().'
+  Output: 'The last exploring function you''ll learn about today is summary().'
   
 - Class: text
   Output: 'summary() prints out summarizing info about each column of a dataframe.'
