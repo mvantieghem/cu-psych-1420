@@ -1,5 +1,5 @@
 - Class: meta
-  Course: assignments
+  Course: cu-psych-1490
   Lesson: assignment1
   Author: Katherine Fox-Glassman, Monica Thieu
   Type: Standard
@@ -456,6 +456,6 @@
 - Class: mult_question
   Output: Now, we will generate an email to your TA. Who is your TA?
   CorrectAnswer: NULL
-  AnswerChoices: Jonathan; Michelle; Monica
+  AnswerChoices: Jonathan; Maneeza; Monica
   AnswerTests: notify()
   Hint: NULL
