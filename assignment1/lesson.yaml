@@ -172,7 +172,7 @@
   Output: 'Accessing individual pieces of a larger dataframe, whether it be rows, columns, or single values, is called INDEXING. To index a column in a dataframe, we can''t just type the name of the column. We need to pull the column out of the dataframe it''s in, using a $.'
 
 - Class: text
-  Output: 'For example, to look at the age column in CLASS_DATA, we need to type the following: CLASS_DATA$age . In R, you use the $ as you would the / for webpages within a website, or file paths on a computer. It allows you to index a column that's stored inside of a dataframe.'
+  Output: 'For example, to look at the age column in CLASS_DATA, we need to type the following: CLASS_DATA$age . In R, you use the $ as you would the / for webpages within a website, or file paths on a computer. It allows you to index a column that''s stored inside of a dataframe.'
 
 - Class: cmd_question
   Output: 'Enter the following command and inspect the output: CLASS_DATA$age'
