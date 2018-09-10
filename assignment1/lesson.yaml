@@ -288,7 +288,7 @@
 - Class: cmd_question
   Output: 'Enter IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"] to see the number of courses enrolled in by only your female-identifying classmates.'
   CorrectAnswer: IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]
-  AnswerTests: omnitests(correctExpr = 'IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]')
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]')
   Hint: 'Copy the following code, paste it into console and press Enter: IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]'
   
 - Class: cmd_question
