@@ -7,13 +7,7 @@
   Version: 2.4.3
 
 - Class: text
-  Output: 'Welcome! In this first assignment, we''ll be learning about how to navigate R (and RStudio.)'
-  
-- Class: text
-  Output: 'You can use R to do spreadsheet-style table manipulation (like Excel), as well as statistics (like SPSS).'
-
-- Class: text
-  Output: 'While it takes a little bit more time to get the hang of using R, we hope you''ll find it rewarding, and choose to use it in your future research!'
+  Output: 'Welcome! In this first assignment, we''ll be learning about how to navigate R (and RStudio.) You can use R to do spreadsheet-style table manipulation (like Excel), as well as statistics (like SPSS). While it takes a little bit more time to get the hang of using R, we hope you''ll find it rewarding, and choose to use it in your future research!'
   
 - Class: text
   Output: 'In this assignment, we will learn how to load in a data file, inspect the data, and do some brief calculations on that data.'
@@ -31,10 +25,7 @@
   Output: 'You should see a file path as the output of getwd(). This tells you the folder on your computer that R is currently "inside".'
 
 - Class: text
-  Output: 'Before working with data, we need to read it into R''s environment.'
-
-- Class: text
-  Output: First, make sure you know where the dataset is saved. It should be in the your current working directory, and saved in .csv format.
+  Output: 'Before working with data, we need to read it into R''s environment First, make sure you know where the dataset is saved. It should be in the your current working directory, and saved in .csv format.'
   
 - Class: cmd_question
   Output: Ask R to show you all the files in your current working directory by calling the function list.files()
@@ -46,19 +37,10 @@
   Output: 'You should see a series of file names in the output. Make sure there is a file that ends in .csv, as that''s the data file we''ll be loading.'
 
 - Class: text
-  Output: 'We''ll use the function read.csv() to read data from this CSV file into R.'
-  
-- Class: text
-  Output: 'We need to tell read.csv() which file we want to read data from. We will do this by putting the name of the file inside the parentheses of read.csv() so that it knows where to look for the data.'
+  Output: 'We''ll use the function read.csv() to read data from this CSV file into R. We need to tell read.csv() which file we want to read data from. We will do this by putting the name of the file inside the parentheses of read.csv() so that it knows where to look for the data.'
 
 - Class: text
-  Output: 'We also need to tell R to store the info from the file in an R object so we can work with the data.'
-
-- Class: text
-  Output: 'We''ll do this using the left-arrow operator, <- , to take the data on the RIGHT side, and save it into the label name on the LEFT side.'
-
-- Class: text
-  Output: 'Then, whenever we want to access the data, we just need to tell R the label name and the data will be there.'
+  Output: 'We also need to tell R to store the info from the file in an R object so we can work with the data. We''ll do this using the left-arrow operator, <- , to take the data on the RIGHT side, and save it into the label name on the LEFT side. Then, whenever we want to access the data, we just need to tell R the label name and the data will be there.'
 
 - Class: cmd_question
   Output: 'Read this CSV data file into R by entering the following command: CLASS_DATA <- read.csv("classdata_2017.csv")'
@@ -67,34 +49,16 @@
   Hint: 'Copy the following command and press Enter to run: CLASS_DATA <- read.csv("classdata_2017.csv")'
 
 - Class: text
-  Output: 'We just read in the data saved in classdata_2017.csv, and used the left arrow <- to assign that data to the label CLASS_DATA.'
-
-- Class: text
-  Output: 'R is case sensitive, so the label CLASS_DATA is not the same as the label CLASS_DATA.'
-
-- Class: text
-  Output: 'Our convention will be to label data frames with capital letters, and variables in lowercase.'
+  Output: 'We just read in the data saved in classdata_2017.csv, and used the left arrow <- to assign that data to the label CLASS_DATA. R is case sensitive, so the label CLASS_DATA is not the same as the label CLASS_DATA. Our convention will be to label data frames with capital letters, and variables in lowercase.'
 
 - Class: text
   Output: 'Next, we''ll learn about functions that help you explore your data. Sometimes, you''ll use these to make sure your data read in correctly, and sometimes you''ll use these simply to inspect your data so you know what''s in it.'
 
 - Class: text
-  Output: 'The first exploring function you''ll use is str().'
+  Output: 'The first exploring function you''ll use is str(). str() tells you the following things about an object:'
   
 - Class: text
-  Output: 'str() tells you the following things about an object:'
-  
-- Class: text
-  Output: 'the type of object that CLASS_DATA is'
-
-- Class: text
-  Output: 'the number of observations and number of variables (dimensions) of CLASS_DATA'
-
-- Class: text
-  Output: 'a list of each variable and its class (interval, factor, numeric, etc.)'
-
-- Class: text
-  Output: 'for each variable, a list of all values'
+  Output: 'the type of object that CLASS_DATA is, the number of observations and number of variables (dimensions) of CLASS_DATA, a list of each variable and its class (interval, factor, numeric, etc.), and for each variable, a list of all values'
   
 - Class: cmd_question
   Output: 'Enter the following command and inspect the output: str(CLASS_DATA)'
@@ -124,10 +88,7 @@
   AnswerTests: omnitest(correctVal = 'Yes')
 
 - Class: text
-  Output: 'The next exploring function you''ll use is head().'
-  
-- Class: text
-  Output: 'head() prints out the first few rows of a dataframe, so you can peek at what the data look like.'
+  Output: 'The next exploring function you''ll use is head(). head() prints out the first few rows of a dataframe, so you can peek at what the data look like.'
   
 - Class: cmd_question
   Output: 'Enter the following command and inspect the output: head(CLASS_DATA)'
@@ -163,10 +124,7 @@
   AnswerTests: omnitest(correctVal = 'Yes')
 
 - Class: text
-  Output: 'The last exploring function you''ll learn about today is summary().'
-  
-- Class: text
-  Output: 'summary() prints out summarizing info about each column of a dataframe.'
+  Output: 'The last exploring function you''ll learn about today is summary(). summary() prints out summarizing info about each column of a dataframe.'
 
 - Class: cmd_question
   Output: 'Enter the following command and inspect the output: summary(CLASS_DATA)'
@@ -211,16 +169,10 @@
   Output: 'Now that we''ve explored the whole dataframe CLASS_DATA, let''s look more closely at some of the columns contained in CLASS_DATA.'
 
 - Class: text
-  Output: Accessing individual pieces of a larger dataframe, whether it be rows, columns, or single values, is called INDEXING.
+  Output: 'Accessing individual pieces of a larger dataframe, whether it be rows, columns, or single values, is called INDEXING. To index a column in a dataframe, we can''t just type the name of the column. We need to pull the column out of the dataframe it''s in, using a $.'
 
 - Class: text
-  Output: 'To index a column in a dataframe, we can''t just type the name of the column. We need to pull the column out of the dataframe it''s in, using a $.'
-
-- Class: text
-  Output: 'For example, to look at the age column in CLASS_DATA, we need to type the following: CLASS_DATA$age'
-
-- Class: text
-  Output: In R, you use the $ as you would the / for webpages within a website, or file paths on a computer. It allows you to index a column that's stored inside of a dataframe.
+  Output: 'For example, to look at the age column in CLASS_DATA, we need to type the following: CLASS_DATA$age . In R, you use the $ as you would the / for webpages within a website, or file paths on a computer. It allows you to index a column that's stored inside of a dataframe.'
 
 - Class: cmd_question
   Output: 'Enter the following command and inspect the output: CLASS_DATA$age'
@@ -265,10 +217,7 @@
   Hint: 'Enter hist(CLASS_DATA$...), where ... is the name of your numeric column in CLASS_DATA, into console and press Enter.'
   
 - Class: text
-  Output: 'Graphical exploration is one tool you can use to explore the content of specific columns in a dataframe, but it''s not the only one.'
-
-- Class: text
-  Output: 'The function summary(), that we used before to explore our whole dataframe also works on specific columns.'
+  Output: 'Graphical exploration is one tool you can use to explore the content of specific columns in a dataframe, but it''s not the only one. The function summary(), that we used before to explore our whole dataframe, also works on specific columns.'
 
 - Class: cmd_question
   Output: 'Call summary() on a numeric column in CLASS_DATA and inspect the output.'
@@ -301,13 +250,7 @@
   Hint: To output the full contents of the age column to console, index the column from CLASS_DATA by entering CLASS_DATA$age into console.
   
 - Class: text
-  Output: You should see that a couple values in CLASS_DATA$age are not numbers, but NA. This means that, for whatever reason in this data, some subjects have missing age data. Rats!
-  
-- Class: text
-  Output: mean(), and many other functions, will not compute if they see missing values (NA). But you can tell them to ignore missing values and compute using the rest of the data.
-  
-- Class: text
-  Output: 'Inside of mean(), the argument na.rm = TRUE will tell mean() to throw out missing values and compute using the remaining data.'
+  Output: You should see that a couple values in CLASS_DATA$age are not numbers, but NA. This means that, for whatever reason in this data, some subjects have missing age data. Rats! mean(), and many other functions, will not compute if they see missing values (NA). But you can tell them to ignore missing values and compute using the rest of the data. Inside of mean(), the argument na.rm = TRUE will tell mean() to throw out missing values and compute using the remaining data.'
   
 - Class: cmd_question
   Output: 'Use the function mean(), with na.rm = TRUE, to find the mean age of students in the dataframe.'
@@ -316,25 +259,10 @@
   Hint: 'Call the function mean() on the age column in CLASS_DATA by entering the following into console: mean(CLASS_DATA$age, na.rm = TRUE)'
   
 - Class: text
-  Output: 'We now know how to index columns in a dataframe using the $ operator. But what if we want to select just some rows in that column?'
-  
-- Class: text
-  Output: 'To index partial columns, we will use hard brackets []. Inside the hard brackets, we will tell R which part of the column we want to index.'
+  Output: 'We now know how to index columns in a dataframe using the $ operator. But what if we want to select just some rows in that column? To index partial columns, we will use hard brackets []. Inside the hard brackets, we will tell R which part of the column we want to index.'
 
 - Class: text
-  Output: 'Usually, when we want to index partial dataframe columns, we only want parts of the column that satisfy some conditions.'
-
-- Class: text
-  Output: 'For example, what if we want to index only the class years for all participants who are older than 21 years?'
-
-- Class: text
-  Output: 'We would use the command CLASS_DATA$class[CLASS_DATA$age > 21] . Inside the hard brackets, we have entered a logical statement.'
-
-- Class: text
-  Output: 'This works because in our dataframe, each row contains the data for a single participant. This means that every value of "class" belongs to the same participant as the value of "age" in the corresponding row of the dataframe.'
-
-- Class: text
-  Output: 'Thus, we can index partial dataframe columns using logical statements about the values of other columns.'
+  Output: 'Usually, when we want to index partial dataframe columns, we only want parts of the column that satisfy some conditions. For example, what if we want to index only the class years for all participants who are older than 21 years? We would use the command CLASS_DATA$class[CLASS_DATA$age > 21] . Inside the hard brackets, we have entered a logical statement. This works because in our dataframe, each row contains the data for a single participant. This means that every value of "class" belongs to the same participant as the value of "age" in the corresponding row of the dataframe. Thus, we can index partial dataframe columns using logical statements about the values of other columns.'
   
 - Class: text
   Output: 'For logical statements on numeric columns, we can use the following operators:'
@@ -355,10 +283,7 @@
   Output: '== , != . These will check if the string (piece of character data) on the left is equal to the string on the right or not.'
   
 - Class: text
-  Output: 'For example, CLASS_DATA$courses_enrolled[CLASS_DATA$gender == "F"] will index all the values of enrolled courses for female gender students.'
-  
-- Class: text
-  Output: 'Notice that for character data, you need to have quotation marks around the data (e.g. "F") so that R knows that you''re referring to character data.'
+  Output: 'For example, CLASS_DATA$courses_enrolled[CLASS_DATA$gender == "F"] will index all the values of enrolled courses for female gender students. Notice that for character data, you need to have quotation marks around the data (e.g. "F") so that R knows that you''re referring to character data.'
   
 - Class: cmd_question
   Output: 'Use hard brackets and a logical statement to index the school affiliations of all left-handed participants.'
@@ -367,13 +292,7 @@
   Hint: 'Call the school column of CLASS_DATA, and then hard-bracket index it, with a logical statement on the inside selecting all values of the handedness column corresponding to left-handers.'
 
 - Class: text
-  Output: 'Now, let''s calculate some descriptive statistics on our data! For the next set of questions, each question will have two parts.'
-  
-- Class: text
-  Output: 'The first part will ask you to type in the correct code to calculate a particular descriptive statistic.'
-  
-- Class: text
-  Output: 'The second part will ask you to type in the correct value of the descriptive statistic. You can enter the number that is output by the answer to the first part of the question to answer the second part of the question.'
+  Output: 'Now, let''s calculate some descriptive statistics on our data! For the next set of questions, each question will have two parts. The first part will ask you to type in the correct code to calculate a particular descriptive statistic. The second part will ask you to type in the correct value of the descriptive statistic. You can enter the number that is output by the answer to the first part of the question to answer the second part of the question.'
   
 - Class: cmd_question
   Output: 'Enter a command to calculate the mean number of psychology classes taken by our participants.'
@@ -412,19 +331,13 @@
   Hint: 'You can re-enter the command from the previous question, or copy the number that was output by the previous command and paste it back into console.'
   
 - Class: text
-  Output: 'For the last part of this assignment, we''ll create new columns in our dataframe for values calculated from existing columns.'
-  
-- Class: text
-  Output: 'For example, you can use this to create columns that contain row-wise means of other columns.'
+  Output: 'For the last part of this assignment, we''ll create new columns in our dataframe for values calculated from existing columns. For example, you can use this to create columns that contain row-wise means of other columns.'
   
 - Class: text
   Output: 'In our dataframe, we will calculate each participant''s score on the "Regret Scale" (Schwartz et al., 2002) by averaging the scores on each of 5 different questions: regret1, regret2, regret3, regret4, and regret5.'
   
 - Class: text
-  Output: 'We can use the function rowMeans() to calculate the mean value for every row of a dataframe.'
-  
-- Class: text
-  Output: 'Then, we''ll assign the output of rowMeans() to a new column in CLASS_DATA so we can keep everyone''s Regret Scale scores with all of their other data.'
+  Output: 'We can use the function rowMeans() to calculate the mean value for every row of a dataframe. Then, we''ll assign the output of rowMeans() to a new column in CLASS_DATA so we can keep everyone''s Regret Scale scores with all of their other data.'
   
 - Class: cmd_question
   Output: 'Run the following command to calculate the mean Regret Scale score from the 5 questions: CLASS_DATA$regret_total <- rowMeans(cbind(CLASS_DATA$regret1, CLASS_DATA$regret2, CLASS_DATA$regret3, CLASS_DATA$regret4, CLASS_DATA$regret5))'
