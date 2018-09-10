@@ -43,13 +43,13 @@
   Output: 'We also need to tell R to store the info from the file in an R object so we can work with the data. We''ll do this using the left-arrow operator, <- , to take the data on the RIGHT side, and save it into the label name on the LEFT side. Then, whenever we want to access the data, we just need to tell R the label name and the data will be there.'
 
 - Class: cmd_question
-  Output: 'Read this CSV data file into R by entering the following command: CLASS_DATA <- read.csv("classdata_2017.csv")'
-  CorrectAnswer: CLASS_DATA <- read.csv("classdata_2017.csv")
-  AnswerTests: omnitest(correctExpr = 'CLASS_DATA <- read.csv("classdata_2017.csv")')
-  Hint: 'Copy the following command and press Enter to run: CLASS_DATA <- read.csv("classdata_2017.csv")'
+  Output: 'Read this CSV data file into R by entering the following command: IntroSurvey <- read.csv("classdata_2018.csv")'
+  CorrectAnswer: IntroSurvey <- read.csv("classdata_2018.csv")
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey <- read.csv("classdata_2018.csv")')
+  Hint: 'Copy the following command and press Enter to run: IntroSurvey <- read.csv("classdata_2018.csv")'
 
 - Class: text
-  Output: 'We just read in the data saved in classdata_2017.csv, and used the left arrow <- to assign that data to the label CLASS_DATA. R is case sensitive, so the label CLASS_DATA is not the same as the label CLASS_DATA. Our convention will be to label data frames with capital letters, and variables in lowercase.'
+  Output: 'We just read in the data saved in classdata_2018.csv, and used the left arrow <- to assign that data to the label IntroSurvey. R is case sensitive, so the label IntroSurvey is not the same as the label introsurvey. Our convention will be to label data frames with capital letters, and variables in lowercase.'
 
 - Class: text
   Output: 'Next, we''ll learn about functions that help you explore your data. Sometimes, you''ll use these to make sure your data read in correctly, and sometimes you''ll use these simply to inspect your data so you know what''s in it.'
@@ -58,13 +58,13 @@
   Output: 'The first exploring function you''ll use is str(). str() tells you the following things about an object:'
   
 - Class: text
-  Output: 'the type of object that CLASS_DATA is, the number of observations and number of variables (dimensions) of CLASS_DATA, a list of each variable and its class (interval, factor, numeric, etc.), and for each variable, a list of all values'
+  Output: 'the type of object that IntroSurvey is, the number of observations and number of variables (dimensions) of IntroSurvey, a list of each variable and its class (interval, factor, numeric, etc.), and for each variable, a list of all values'
   
 - Class: cmd_question
-  Output: 'Enter the following command and inspect the output: str(CLASS_DATA)'
-  CorrectAnswer: str(CLASS_DATA)
-  AnswerTests: omnitest(correctExpr = 'str(CLASS_DATA)')
-  Hint: 'Copy the following command and press Enter to run: str(CLASS_DATA)'
+  Output: 'Enter the following command and inspect the output: str(IntroSurvey)'
+  CorrectAnswer: str(IntroSurvey)
+  AnswerTests: omnitest(correctExpr = 'str(IntroSurvey)')
+  Hint: 'Copy the following command and press Enter to run: str(IntroSurvey)'
 
 - Class: text
   Output: 'Now, here are some questions about what str() tells you.'
@@ -91,10 +91,10 @@
   Output: 'The next exploring function you''ll use is head(). head() prints out the first few rows of a dataframe, so you can peek at what the data look like.'
   
 - Class: cmd_question
-  Output: 'Enter the following command and inspect the output: head(CLASS_DATA)'
-  CorrectAnswer: head(CLASS_DATA)
-  AnswerTests: omnitest(correctExpr = 'head(CLASS_DATA)')
-  Hint: 'Copy the following command and press Enter to run: head(CLASS_DATA)'
+  Output: 'Enter the following command and inspect the output: head(IntroSurvey)'
+  CorrectAnswer: head(IntroSurvey)
+  AnswerTests: omnitest(correctExpr = 'head(IntroSurvey)')
+  Hint: 'Copy the following command and press Enter to run: head(IntroSurvey)'
 
 - Class: text
   Output: 'Now, here are some questions about what head() tells you.'
@@ -127,10 +127,10 @@
   Output: 'The last exploring function you''ll learn about today is summary(). summary() prints out summarizing info about each column of a dataframe.'
 
 - Class: cmd_question
-  Output: 'Enter the following command and inspect the output: summary(CLASS_DATA)'
-  CorrectAnswer: summary(CLASS_DATA)
-  AnswerTests: omnitest(correctExpr = 'summary(CLASS_DATA)')
-  Hint: 'Copy the following command and press Enter to run: summary(CLASS_DATA)'
+  Output: 'Enter the following command and inspect the output: summary(IntroSurvey)'
+  CorrectAnswer: summary(IntroSurvey)
+  AnswerTests: omnitest(correctExpr = 'summary(IntroSurvey)')
+  Hint: 'Copy the following command and press Enter to run: summary(IntroSurvey)'
 
 - Class: text
   Output: 'Now, here are some questions about what summary() tells you.'
@@ -166,103 +166,103 @@
   AnswerTests: omnitest(correctVal = 'Yes')
 
 - Class: text
-  Output: 'Now that we''ve explored the whole dataframe CLASS_DATA, let''s look more closely at some of the columns contained in CLASS_DATA.'
+  Output: 'Now that we''ve explored the whole dataframe IntroSurvey, let''s look more closely at some of the columns contained in IntroSurvey.'
 
 - Class: text
   Output: 'Accessing individual pieces of a larger dataframe, whether it be rows, columns, or single values, is called INDEXING. To index a column in a dataframe, we can''t just type the name of the column. We need to pull the column out of the dataframe it''s in, using a $.'
 
 - Class: text
-  Output: 'For example, to look at the age column in CLASS_DATA, we need to type the following: CLASS_DATA$age . In R, you use the $ as you would the / for webpages within a website, or file paths on a computer. It allows you to index a column that''s stored inside of a dataframe.'
+  Output: 'For example, to look at the age column in IntroSurvey, we need to type the following: IntroSurvey$age . In R, you use the $ as you would the / for webpages within a website, or file paths on a computer. It allows you to index a column that''s stored inside of a dataframe.'
 
 - Class: cmd_question
-  Output: 'Enter the following command and inspect the output: CLASS_DATA$age'
-  CorrectAnswer: CLASS_DATA$age
-  AnswerTests: omnitest(correctExpr = 'CLASS_DATA$age')
-  Hint: 'Copy the following command and press Enter to run: CLASS_DATA$age'
+  Output: 'Enter the following command and inspect the output: IntroSurvey$age'
+  CorrectAnswer: IntroSurvey$age
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$age')
+  Hint: 'Copy the following command and press Enter to run: IntroSurvey$age'
 
 - Class: cmd_question
-  Output: 'Index any column in CLASS_DATA using the dollar sign $ operator.'
-  CorrectAnswer: 'CLASS_DATA$id'
+  Output: 'Index any column in IntroSurvey using the dollar sign $ operator.'
+  CorrectAnswer: 'IntroSurvey$id'
   AnswerTests: expr_grepl('$')
-  Hint: 'Enter CLASS_DATA$ with the name of any column in CLASS_DATA after the $'
+  Hint: 'Enter IntroSurvey$ with the name of any column in IntroSurvey after the $'
 
 - Class: text
-  Output: Now, use any the exploration functions you've found so far to identify two numeric variables in this data.
+  Output: Now, use any of the exploration functions you've found so far to identify two numeric variables in this data.
 
 - Class: cmd_question
-  Output: 'Index a numeric column in CLASS_DATA using the dollar sign $ operator.'
-  CorrectAnswer: CLASS_DATA$courses_enrolled
+  Output: 'Index a numeric column in IntroSurvey using the dollar sign $ operator.'
+  CorrectAnswer: IntroSurvey$courses_enrolled
   AnswerTests: expr_grepl('$'); result_has_type('numeric')
-  Hint: 'Enter CLASS_DATA$ with the name of any numeric column in CLASS_DATA after the $. If you are not sure which columns are numeric, enter str(CLASS_DATA) and inspect the output for columns that say "int" (for integer) or "num" (for numeric).'
+  Hint: 'Enter IntroSurvey$ with the name of any numeric column in IntroSurvey after the $. If you are not sure which columns are numeric, enter str(IntroSurvey) and inspect the output for columns that say "int" (for integer) or "num" (for numeric).'
 
 - Class: cmd_question
-  Output: 'Index another numeric column in CLASS_DATA using the dollar sign $ operator.'
-  CorrectAnswer: CLASS_DATA$courses_shopped
+  Output: 'Index another numeric column in IntroSurvey using the dollar sign $ operator.'
+  CorrectAnswer: IntroSurvey$courses_shopped
   AnswerTests: expr_grepl('$'); result_has_type('numeric')
-  Hint: 'Enter CLASS_DATA$ with the name of any numeric column in CLASS_DATA after the $. If you are not sure which columns are numeric, enter str(CLASS_DATA) and inspect the output for columns that say "int" (for integer) or "num" (for numeric).'
+  Hint: 'Enter IntroSurvey$ with the name of any numeric column in IntroSurvey after the $. If you are not sure which columns are numeric, enter str(IntroSurvey) and inspect the output for columns that say "int" (for integer) or "num" (for numeric).'
 
 - Class: text
   Output: 'Now, we''ll quickly visualize these two numeric columns. Visualizing data in a graph is a great way to quickly inspect it.'
   
 - Class: cmd_question
-  Output: 'Create a quick histogram of your first numeric column in CLASS_DATA using hist().'
-  CorrectAnswer: hist(CLASS_DATA$age)
+  Output: 'Create a quick histogram of your first numeric column in IntroSurvey using hist().'
+  CorrectAnswer: hist(IntroSurvey$age)
   AnswerTests: expr_uses_func('hist')
-  Hint: 'Enter hist(CLASS_DATA$...), where ... is the name of your numeric column in CLASS_DATA, into console and press Enter.'
+  Hint: 'Enter hist(IntroSurvey$...), where ... is the name of your numeric column in IntroSurvey, into console and press Enter.'
   
 - Class: cmd_question
-  Output: 'Create a quick histogram of your second numeric column in CLASS_DATA using hist().'
-  CorrectAnswer: hist(CLASS_DATA$age)
+  Output: 'Create a quick histogram of your second numeric column in IntroSurvey using hist().'
+  CorrectAnswer: hist(IntroSurvey$age)
   AnswerTests: expr_uses_func('hist')
-  Hint: 'Enter hist(CLASS_DATA$...), where ... is the name of your numeric column in CLASS_DATA, into console and press Enter.'
+  Hint: 'Enter hist(IntroSurvey$...), where ... is the name of your numeric column in IntroSurvey, into console and press Enter.'
   
 - Class: text
   Output: 'Graphical exploration is one tool you can use to explore the content of specific columns in a dataframe, but it''s not the only one. The function summary(), that we used before to explore our whole dataframe, also works on specific columns.'
 
 - Class: cmd_question
-  Output: 'Call summary() on a numeric column in CLASS_DATA and inspect the output.'
-  CorrectAnswer: summary(CLASS_DATA$age)
+  Output: 'Call summary() on a numeric column in IntroSurvey and inspect the output.'
+  CorrectAnswer: summary(IntroSurvey$age)
   AnswerTests: expr_uses_func('summary'); result_has_type('numeric')
-  Hint: 'Enter hist(CLASS_DATA$...), where ... is the name of your numeric column in CLASS_DATA, into console and press Enter.'
+  Hint: 'Enter hist(IntroSurvey$...), where ... is the name of your numeric column in IntroSurvey, into console and press Enter.'
 
 - Class: cmd_question
-  Output: 'Call summary() on a factor column in CLASS_DATA and inspect the output.'
-  CorrectAnswer: summary(CLASS_DATA$age)
+  Output: 'Call summary() on a factor column in IntroSurvey and inspect the output.'
+  CorrectAnswer: summary(IntroSurvey$age)
   AnswerTests: expr_uses_func('summary'); result_has_type('integer')
-  Hint: 'Enter hist(CLASS_DATA$...), where ... is the name of your factor column in CLASS_DATA, into console and press Enter.  If you are not sure which columns are factor, enter str(CLASS_DATA) and inspect the output for columns that say "Factor".'
+  Hint: 'Enter hist(IntroSurvey$...), where ... is the name of your factor column in IntroSurvey, into console and press Enter.  If you are not sure which columns are factor, enter str(IntroSurvey) and inspect the output for columns that say "Factor".'
   
 - Class: text
   Output: 'Now, let''s find specific descriptive statistics about specific columns in our data.'
 
 - Class: cmd_question
   Output: 'Use the function mean() to find the mean age of students in the dataframe.'
-  CorrectAnswer: mean(CLASS_DATA$age)
-  AnswerTests: omnitest(correctExpr = 'mean(CLASS_DATA$age)')
-  Hint: 'Call the function mean() on the age column in CLASS_DATA by entering the following into console: mean(CLASS_DATA$age)'
+  CorrectAnswer: mean(IntroSurvey$age)
+  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$age)')
+  Hint: 'Call the function mean() on the age column in IntroSurvey by entering the following into console: mean(IntroSurvey$age)'
   
 - Class: text
   Output: 'Why does it say NA? This means "not available." R is telling you it can''t compute a mean. This happens when you have one or more missing values.'
 
 - Class: cmd_question
-  Output: Look at the full contents of the age column of CLASS_DATA in console to see if there is missing data in the column.
-  CorrectAnswer: CLASS_DATA$age
-  AnswerTests: omnitest(correctExpr = 'CLASS_DATA$age')
-  Hint: To output the full contents of the age column to console, index the column from CLASS_DATA by entering CLASS_DATA$age into console.
+  Output: Look at the full contents of the age column of IntroSurvey in console to see if there is missing data in the column.
+  CorrectAnswer: IntroSurvey$age
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$age')
+  Hint: To output the full contents of the age column to console, index the column from IntroSurvey by entering IntroSurvey$age into console.
   
 - Class: text
-  Output: You should see that a couple values in CLASS_DATA$age are not numbers, but NA. This means that, for whatever reason in this data, some subjects have missing age data. Rats! mean(), and many other functions, will not compute if they see missing values (NA). But you can tell them to ignore missing values and compute using the rest of the data. Inside of mean(), the argument na.rm = TRUE will tell mean() to throw out missing values and compute using the remaining data.'
+  Output: You should see that a couple values in IntroSurvey$age are not numbers, but NA. This means that, for whatever reason in this data, some subjects have missing age data. Rats! mean(), and many other functions, will not compute if they see missing values (NA). But you can tell them to ignore missing values and compute using the rest of the data. Inside of mean(), the argument na.rm = TRUE will tell mean() to throw out missing values and compute using the remaining data.'
   
 - Class: cmd_question
-  Output: 'Use the function mean(), with na.rm = TRUE, to find the mean age of students in the dataframe.'
-  CorrectAnswer: mean(CLASS_DATA$age, na.rm = TRUE)
-  AnswerTests: omnitest(correctExpr = 'mean(CLASS_DATA$age, na.rm = TRUE)')
-  Hint: 'Call the function mean() on the age column in CLASS_DATA by entering the following into console: mean(CLASS_DATA$age, na.rm = TRUE)'
+  Output: 'Add the argument " , na.rm = TRUE" (without the quotes) after the variable name within mean() to find the mean age of students in the dataframe.'
+  CorrectAnswer: mean(IntroSurvey$age, na.rm = TRUE)
+  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$age, na.rm = TRUE)')
+  Hint: 'Call the function mean() on the age column in IntroSurvey by entering the following into console: mean(IntroSurvey$age, na.rm = TRUE)'
   
 - Class: text
   Output: 'We now know how to index columns in a dataframe using the $ operator. But what if we want to select just some rows in that column? To index partial columns, we will use hard brackets []. Inside the hard brackets, we will tell R which part of the column we want to index.'
 
 - Class: text
-  Output: 'Usually, when we want to index partial dataframe columns, we only want parts of the column that satisfy some conditions. For example, what if we want to index only the class years for all participants who are older than 21 years? We would use the command CLASS_DATA$class[CLASS_DATA$age > 21] . Inside the hard brackets, we have entered a logical statement. This works because in our dataframe, each row contains the data for a single participant. This means that every value of "class" belongs to the same participant as the value of "age" in the corresponding row of the dataframe. Thus, we can index partial dataframe columns using logical statements about the values of other columns.'
+  Output: 'Usually, when we want to index partial dataframe columns, we only want parts of the column that satisfy some conditions. For example, what if we want to index only the class years for all participants who are older than 21 years? We would use the command IntroSurvey$class[IntroSurvey$age > 21] . Inside the hard brackets, we have entered a logical statement. This works because in our dataframe, each row contains the data for a single participant. This means that every value of "class" belongs to the same participant as the value of "age" in the corresponding row of the dataframe. Thus, we can index partial dataframe columns using logical statements about the values of other columns.'
   
 - Class: text
   Output: 'For logical statements on numeric columns, we can use the following operators:'
@@ -283,51 +283,57 @@
   Output: '== , != . These will check if the string (piece of character data) on the left is equal to the string on the right or not.'
   
 - Class: text
-  Output: 'For example, CLASS_DATA$courses_enrolled[CLASS_DATA$gender == "F"] will index all the values of enrolled courses for female gender students. Notice that for character data, you need to have quotation marks around the data (e.g. "F") so that R knows that you''re referring to character data.'
+  Output: 'For example, IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"] will index all the values of enrolled courses for female-identified students. Notice that for character data, you need to have quotation marks around the data (e.g. "F") so that R knows that you''re referring to character data.'
+
+- Class: cmd_question
+  Output: 'Enter IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"] to see the number of courses enrolled in by only your female-identifying classmates.'
+  CorrectAnswer: IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]
+  AnswerTests: omnitests(correctExpr = 'IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]')
+  Hint: 'Copy the following code, paste it into console and press Enter: IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]'
   
 - Class: cmd_question
-  Output: 'Use hard brackets and a logical statement to index the school affiliations of all left-handed participants.'
-  CorrectAnswer: CLASS_DATA$school[CLASS_DATA$handed == "L"]
-  AnswerTests: omnitest(correctExpr = 'CLASS_DATA$school[CLASS_DATA$handed == "L"]')
-  Hint: 'Call the school column of CLASS_DATA, and then hard-bracket index it, with a logical statement on the inside selecting all values of the handedness column corresponding to left-handers.'
+  Output: 'Now, we''ll try another one. Use hard brackets and a logical statement to index the school affiliations of all left-handed participants.'
+  CorrectAnswer: IntroSurvey$school[IntroSurvey$handed == "L"]
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$school[IntroSurvey$handed == "L"]')
+  Hint: 'Call the school column of IntroSurvey, and then hard-bracket index it, with a logical statement on the inside selecting all values of the handedness column corresponding to left-handers.'
 
 - Class: text
   Output: 'Now, let''s calculate some descriptive statistics on our data! For the next set of questions, each question will have two parts. The first part will ask you to type in the correct code to calculate a particular descriptive statistic. The second part will ask you to type in the correct value of the descriptive statistic. You can enter the number that is output by the answer to the first part of the question to answer the second part of the question.'
   
 - Class: cmd_question
   Output: 'Enter a command to calculate the mean number of psychology classes taken by our participants.'
-  CorrectAnswer: mean(CLASS_DATA$psych_courses, na.rm = TRUE)
-  AnswerTests: omnitest(correctExpr = 'mean(CLASS_DATA$psych_courses, na.rm = TRUE)')
-  Hint: 'Index the psych_courses column of CLASS_DATA, and feed it into mean(). Be careful of missing data!'
+  CorrectAnswer: mean(IntroSurvey$psych_courses, na.rm = TRUE)
+  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$psych_courses, na.rm = TRUE)')
+  Hint: 'Index the psych_courses column of IntroSurvey, and feed it into mean(). Be careful of missing data!'
   
 - Class: exact_question
   Output: 'What is the mean number of psychology classes taken by our participants?'
-  CorrectAnswer: 3.7
-  AnswerTests: val_rounded_equals(3.7, digits = 1)
+  CorrectAnswer: 4.4
+  AnswerTests: val_rounded_equals(4.4, digits = 1)
   Hint: 'You can re-enter the command from the previous question, or copy the number that was output by the previous command and paste it back into console.'
   
 - Class: cmd_question
   Output: 'Enter a command that tells you how many participants are left-handed.'
-  CorrectAnswer: summary(CLASS_DATA$handed)
-  AnswerTests: any_of_exprs('summary(CLASS_DATA$handed)', 'sum(CLASS_DATA$handed == "L")')
+  CorrectAnswer: summary(IntroSurvey$handed)
+  AnswerTests: any_of_exprs('summary(IntroSurvey$handed)', 'sum(IntroSurvey$handed == "L")')
   Hint: 'Try using summary() to take a look at the handedness column.'
   
 - Class: exact_question
   Output: 'How many participants are left-handed?'
-  CorrectAnswer: 3
-  AnswerTests: omnitest(correctVal = 3)
+  CorrectAnswer: 4
+  AnswerTests: omnitest(correctVal = 4)
   Hint: 'Copy the correct number that was output by the previous command and paste it back into console.'
   
 - Class: cmd_question
   Output: 'Enter a command to calculate the mean age of the juniors.'
-  CorrectAnswer: mean(CLASS_DATA$age[CLASS_DATA$class == "Junior"])
-  AnswerTests: omnitest(correctExpr = 'mean(CLASS_DATA$age[CLASS_DATA$class == "Junior"])')
-  Hint: 'Index the age column of CLASS_DATA, but use hard brackets to index only the ages of juniors. Then feed that into mean().'
+  CorrectAnswer: mean(IntroSurvey$age[IntroSurvey$class == "Junior"])
+  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$age[IntroSurvey$class == "Junior"])')
+  Hint: 'Index the age column of IntroSurvey, but use hard brackets to index only the ages of juniors. Then feed that into mean().'
   
 - Class: exact_question
   Output: 'What is the mean age of the juniors?'
-  CorrectAnswer: 21.9
-  AnswerTests: val_rounded_equals(21.9, digits = 1)
+  CorrectAnswer: 22.3
+  AnswerTests: val_rounded_equals(22.3, digits = 1)
   Hint: 'You can re-enter the command from the previous question, or copy the number that was output by the previous command and paste it back into console.'
   
 - Class: text
@@ -337,30 +343,30 @@
   Output: 'In our dataframe, we will calculate each participant''s score on the "Regret Scale" (Schwartz et al., 2002) by averaging the scores on each of 5 different questions: regret1, regret2, regret3, regret4, and regret5.'
   
 - Class: text
-  Output: 'We can use the function rowMeans() to calculate the mean value for every row of a dataframe. Then, we''ll assign the output of rowMeans() to a new column in CLASS_DATA so we can keep everyone''s Regret Scale scores with all of their other data.'
+  Output: 'We can use the function rowMeans() to calculate the mean value for every row of a dataframe. Then, we''ll assign the output of rowMeans() to a new column in IntroSurvey so we can keep everyone''s Regret Scale scores with all of their other data.'
   
 - Class: cmd_question
-  Output: 'Run the following command to calculate the mean Regret Scale score from the 5 questions: CLASS_DATA$regret_total <- rowMeans(cbind(CLASS_DATA$regret1, CLASS_DATA$regret2, CLASS_DATA$regret3, CLASS_DATA$regret4, CLASS_DATA$regret5))'
-  CorrectAnswer: CLASS_DATA$regret_total <- rowMeans(cbind(CLASS_DATA$regret1, CLASS_DATA$regret2, CLASS_DATA$regret3, CLASS_DATA$regret4, CLASS_DATA$regret5))
-  AnswerTests: omnitest(correctExpr = 'CLASS_DATA$regret_total <- rowMeans(cbind(CLASS_DATA$regret1, CLASS_DATA$regret2, CLASS_DATA$regret3, CLASS_DATA$regret4, CLASS_DATA$regret5))')
-  Hint: 'Copy the following command and paste it into the console: CLASS_DATA$regret_total <- rowMeans(cbind(CLASS_DATA$regret1, CLASS_DATA$regret2, CLASS_DATA$regret3, CLASS_DATA$regret4, CLASS_DATA$regret5))'
+  Output: 'Run the following command to calculate the mean Regret Scale score from the 5 questions: IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1, IntroSurvey$regret2, IntroSurvey$regret3, IntroSurvey$regret4, IntroSurvey$regret5))'
+  CorrectAnswer: IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1, IntroSurvey$regret2, IntroSurvey$regret3, IntroSurvey$regret4, IntroSurvey$regret5))
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1, IntroSurvey$regret2, IntroSurvey$regret3, IntroSurvey$regret4, IntroSurvey$regret5))')
+  Hint: 'Copy the following command and paste it into the console: IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1, IntroSurvey$regret2, IntroSurvey$regret3, IntroSurvey$regret4, IntroSurvey$regret5))'
   
 - Class: cmd_question
-  Output: 'Now re-run names() on the CLASS_DATA dataframe to check that the new variable is there. regret_total should show up in the names.'
-  CorrectAnswer: names(CLASS_DATA)
-  AnswerTests: omnitest(correctExpr = 'names(CLASS_DATA)'); 'regret_total' %in% names(CLASS_DATA)
-  Hint: 'Copy the following command and paste it into the console: names(CLASS_DATA)'
+  Output: 'Now re-run names() on the IntroSurvey dataframe to check that the new variable is there. regret_total should show up in the names.'
+  CorrectAnswer: names(IntroSurvey)
+  AnswerTests: omnitest(correctExpr = 'names(IntroSurvey)'); 'regret_total' %in% names(IntroSurvey)
+  Hint: 'Copy the following command and paste it into the console: names(IntroSurvey)'
   
 - Class: exact_question
   Output: 'What is the mean regret score for the class?'
-  CorrectAnswer: mean(CLASS_DATA$regret_total)
-  AnswerTests: val_rounded_equals(4, digits = 1)
+  CorrectAnswer: mean(IntroSurvey$regret_total)
+  AnswerTests: val_rounded_equals(4.6, digits = 1)
   Hint: 'Call mean() on the new regret_total column.'
   
 - Class: exact_question
-  Output: 'What is the mean regret score for students over 21 years of age?'
-  CorrectAnswer: mean(CLASS_DATA$regret_total[CLASS_DATA$age > 21])
-  AnswerTests: val_rounded_equals(3.6, digits = 1)
+  Output: 'What is the mean regret score for students in Columbia College?'
+  CorrectAnswer: mean(IntroSurvey$regret_total[IntroSurvey$CC == "CC"])
+  AnswerTests: val_rounded_equals(4.8, digits = 1)
   Hint: 'Call mean() on the appropriate subset of the regret_total column using hard-bracket indexing with a logical statement inside.'
 
 - Class: text

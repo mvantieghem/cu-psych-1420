@@ -39,6 +39,7 @@ result_has_type <- function (type) {
 
 val_rounded_equals <- function (value, digits = 0) {
   test <- round(environment(sys.function(1))$e$val, digits = digits) == value
+  if (is.na(test)) return (FALSE)
   return (test)
 }
 
