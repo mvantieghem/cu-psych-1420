@@ -223,13 +223,13 @@
   Output: 'Call summary() on a numeric column in IntroSurvey and inspect the output.'
   CorrectAnswer: summary(IntroSurvey$age)
   AnswerTests: expr_uses_func('summary'); result_has_type('numeric')
-  Hint: 'Enter hist(IntroSurvey$...), where ... is the name of your numeric column in IntroSurvey, into console and press Enter.'
+  Hint: 'Enter summary(IntroSurvey$...), where ... is the name of your numeric column in IntroSurvey, into console and press Enter.'
 
 - Class: cmd_question
   Output: 'Call summary() on a factor column in IntroSurvey and inspect the output.'
   CorrectAnswer: summary(IntroSurvey$age)
   AnswerTests: expr_uses_func('summary'); result_has_type('integer')
-  Hint: 'Enter hist(IntroSurvey$...), where ... is the name of your factor column in IntroSurvey, into console and press Enter.  If you are not sure which columns are factor, enter str(IntroSurvey) and inspect the output for columns that say "Factor".'
+  Hint: 'Enter summary(IntroSurvey$...), where ... is the name of your factor column in IntroSurvey, into console and press Enter.  If you are not sure which columns are factor, enter str(IntroSurvey) and inspect the output for columns that say "Factor".'
   
 - Class: text
   Output: 'Now, let''s find specific descriptive statistics about specific columns in our data.'
