@@ -1,0 +1,269 @@
+---
+title: "Assignment 1 Reference"
+author: "CU Psych 1491"
+output:
+  pdf_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Welcome!
+
+Welcome! In this first assignment, we'll be learning about how to navigate R (and RStudio.) You can use R to do spreadsheet-style table manipulation (like Excel), as well as statistics (like SPSS). While it takes a little bit more time to get the hang of using R, we hope you'll find it rewarding, and choose to use it in your future research!
+  
+In this assignment, we will learn how to load in a data file, inspect the data, and do some brief calculations on that data.
+
+## getwd() and list.files()
+
+First, we want to tell R where to find the data files we'll be using.
+  
+Ask R "what is the current working directory?" by calling the function `getwd()`.
+
+```{r}
+getwd()
+```
+
+You should see a file path as the output of `getwd()`. This tells you the folder on your computer that R is currently "inside".
+
+Before working with data, we need to read it into R's environment. First, make sure you know where the dataset is saved. It should be in the your current working directory, and saved in .csv format.
+  
+Ask R to show you all the files in your current working directory by calling the function `list.files()`.
+
+```{r}
+list.files()
+```
+
+You should see a series of file names in the output. Make sure there is a file that ends in .csv, as that's the data file we'll be loading.
+
+## reading in CSV data with read.csv()
+
+We'll use the function `read.csv()` to read data from this CSV file into R. We need to tell `read.csv()` which file we want to read data from. We will do this by putting the name of the file inside the parentheses of `read.csv()` so that it knows where to look for the data.
+
+We also need to tell R to store the info from the file in an R object so we can work with the data. We'll do this using the left-arrow operator, `<-`, to take the data on the RIGHT side, and save it into the label name on the LEFT side. Then, whenever we want to access the data, we just need to tell R the label name and the data will be there.
+
+Read our CSV data file into R by entering the following command:
+
+```{r, eval = FALSE}
+IntroSurvey <- read.csv("classdata_2018.csv")
+```
+
+```{r, include = FALSE}
+IntroSurvey <- read.csv("~/Repos/cu-psych-1490/classdata_2018.csv")
+```
+
+
+We just read in the data saved in `classdata_2018.csv`, and used the left arrow `<-` to assign that data to the label `IntroSurvey`. R is case sensitive, so the label `IntroSurvey` is not the same as the label `introsurvey`. Our convention will be to label data frames with capital letters, and variables in lowercase.
+
+Next, we'll learn about functions that help you explore your data. Sometimes, you'll use these to make sure your data read in correctly, and sometimes you'll use these simply to inspect your data so you know what's in it.
+
+## Data exploration functions
+
+The first exploring function you'll use is `str()`. `str()` tells you the following things about an object:
+  
+* the type of object that IntroSurvey is
+* the number of observations and number of variables (dimensions) of IntroSurvey
+* a list of each variable and its class (interval, factor, numeric, etc.)
+* for each variable, a list of all values
+
+```{r}
+str(IntroSurvey)
+```
+
+The next exploring function you'll use is `head()`. `head()` prints out the first few rows of a dataframe, so you can peek at what the data look like.
+
+```{r}
+head(IntroSurvey)
+```
+
+The last exploring function you'll learn about today is `summary()`. `summary()` prints out summarizing info about each column of a dataframe.
+
+```{r}
+summary(IntroSurvey)
+```
+
+Now that we've explored the whole dataframe IntroSurvey, let's look more closely at some of the columns contained in IntroSurvey.
+
+## Indexing: looking at specific columns in a dataframe
+
+Accessing individual pieces of a larger dataframe, whether it be rows, columns, or single values, is called INDEXING. To index a column in a dataframe, we can't just type the name of the column. We need to pull the column out of the dataframe it's in, using a $.
+
+For example, to look at the age column in IntroSurvey, we need to type the following:
+  
+```{r}
+IntroSurvey$age
+```
+
+In R, you use the $ as you would the / for webpages within a website, or file paths on a computer. It allows you to index a column that's stored inside of a dataframe.
+
+Now, use any of the exploration functions you've found so far to identify two numeric variables in this data.
+
+For example, if we use `str()` again:
+
+```{r}
+str(IntroSurvey)
+```
+
+We can now find two numeric columns to index specifically.
+
+```{r}
+IntroSurvey$courses_enrolled
+
+IntroSurvey$courses_shopped
+```
+
+## Visualizing data with hist()
+
+Now, we'll quickly visualize these two numeric columns by creating quick histograms with `hist()`. Visualizing data in a graph is a great way to quickly inspect it.
+  
+```{r}
+hist(IntroSurvey$courses_enrolled)
+```
+
+```{r}
+hist(IntroSurvey$courses_shopped)
+```
+
+  
+Graphical exploration is one tool you can use to explore the content of specific columns in a dataframe, but it's not the only one. The function `summary()`, that we used before to explore our whole dataframe, also works on specific columns.
+
+If we call it on a numeric column:
+
+```{r}
+summary(IntroSurvey$age)
+```
+
+Versus a factor column:
+
+```{r}
+summary(IntroSurvey$class)
+```
+
+## mean() and missing data
+  
+Now, let's find specific descriptive statistics about specific columns in our data.
+
+Use the function mean() to find the mean age of students in the dataframe.
+
+```{r}
+mean(IntroSurvey$age)
+```
+
+Why does it say `NA`? This means "not available." R is telling you it can't compute a mean. This happens when you have one or more missing values.
+
+Look at the full contents of the age column of IntroSurvey in console to see if there is missing data in the column.
+
+```{r}
+IntroSurvey$age
+```
+  
+You should see that a couple values in `IntroSurvey$age` are not numbers, but `NA`. This means that, for whatever reason in this data, some subjects have missing age data. Rats! `mean()`, and many other functions, will not compute if they see missing values (`NA`). But you can tell them to ignore missing values and compute using the rest of the data. Inside of `mean()`, the argument `na.rm = TRUE` will tell mean() to throw out missing values and compute using the remaining data.
+
+```{r}
+mean(IntroSurvey$age, na.rm = TRUE)
+```
+
+## Partial column indexing with hard brackets []
+
+We now know how to index columns in a dataframe using the $ operator. But what if we want to select just some rows in that column? To index partial columns, we will use hard brackets []. Inside the hard brackets, we will tell R which part of the column we want to index.
+
+Usually, when we want to index partial dataframe columns, we only want parts of the column that satisfy some conditions. For example, what if we want to index only the class years for all participants who are older than 21 years?
+
+```{r}
+IntroSurvey$class[IntroSurvey$age > 21]
+```
+
+Inside the hard brackets, we have entered a **logical statement.** This works because in our dataframe, each row contains the data for a single participant. This means that every value of `class` belongs to the same participant as the value of `age` in the corresponding row of the dataframe. Thus, we can index partial dataframe columns using logical statements about the values of other columns.
+  
+For logical statements on _numeric_ columns, we can use the following operators:
+
+* `==` (is equal to)
+* `!=` (is not equal to)
+* `>` (greater than)
+* `>=` (greater than or equal to)
+* `<` (less than)
+* `<=` (less than or equal to)
+
+For logical statements on _text_ columns, we can use the following operators:
+
+* `==`
+* `!=`
+
+These will check if the string (piece of character data) on the left is equal to the string on the right or not. For example:
+
+```{r}
+IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]
+```
+
+The above indexes all the values of enrolled courses for female-identified students. Notice that for character data, you need to have quotation marks around the data (e.g. "F") so that R knows that you're referring to character data.
+  
+Now, we'll try another one. Use hard brackets and a logical statement to index the school affiliations of all left-handed participants.
+
+```{r}
+IntroSurvey$school[IntroSurvey$handed == "L"]
+```
+
+## Descriptive stats exercises
+
+Now, let's calculate some descriptive statistics on our data!
+
+What is the mean number of psychology classes taken by our participants?
+
+```{r}
+# Be careful of missing data!
+mean(IntroSurvey$psych_courses, na.rm = TRUE)
+```
+
+How many participants are left-handed?
+
+```{r}
+summary(IntroSurvey$handed)
+```
+
+Calling `summary()` on a factor column tells us, in this case, how many students responded "L" for left-handed.
+  
+What is the mean age of the juniors?
+
+```{r}
+mean(IntroSurvey$age[IntroSurvey$class == "Junior"])
+```
+
+## Creating new dataframe columns with new data
+  
+For the last part of this assignment, we'll create new columns in our dataframe for values calculated from existing columns.
+
+For example, you can use this to create columns that contain row-wise means of other columns.
+  
+In our dataframe, we will calculate each participant's score on the "Regret Scale" (Schwartz et al., 2002) by averaging the scores on each of 5 different questions: `regret1`, `regret2`, `regret3`, `regret4`, and `regret5`.
+  
+We can use the function `rowMeans()` to calculate the mean value for every row of a dataframe. Then, we'll assign the output of `rowMeans()` to a new column in `IntroSurvey` so we can keep everyone's Regret Scale scores with all of their other data.
+  
+```{r}
+IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1,
+                                           IntroSurvey$regret2,
+                                           IntroSurvey$regret3,
+                                           IntroSurvey$regret4,
+                                           IntroSurvey$regret5))
+```
+
+Now re-run `names()` on the `IntroSurvey` dataframe to check that the new variable is there. `regret_total` should show up in the names.
+
+```{r}
+names(IntroSurvey)
+```
+
+What is the mean regret score for the class?
+
+```{r}
+mean(IntroSurvey$regret_total)
+```
+
+What is the mean regret score for students in Columbia College?
+
+```{r}
+mean(IntroSurvey$regret_total[IntroSurvey$CC == "CC"])
+```
+
+That concludes the first R assignment. Congratulations!
