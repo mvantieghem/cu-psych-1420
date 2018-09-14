@@ -24,12 +24,17 @@ To use a package, you have to install it (once), and then load it (every time yo
 
 # 1.
 
-Check your working directory using `getwd()`. If you opened RStudio via the R project file in the same directory that contains your datafile (classdata_2017.csv) and your R scripts, you should be in that folder now.
+Check your working directory using `getwd()`. If you opened RStudio via the R project file in the same directory that contains your datafile (classdata_2018.csv) and your R scripts, you should be in that folder now.
+
+```{r}
+# Code goes here
+
+```
 
 
 # 2.
 
-Read in your data file using `read.csv("classdata_2017.csv")`, and assign it to the dataframe name `TDM`.
+Read in your data file using `read.csv("classdata_2018.csv")`, and assign it to the dataframe name `IntroSurvey`.
 
 ```{r}
 # Code goes here
@@ -38,7 +43,7 @@ Read in your data file using `read.csv("classdata_2017.csv")`, and assign it to 
 
 # 3.
 
-Use the following exploration functions to check that the dataframe `TDM` read in correctly:
+Use the following exploration functions to check that the dataframe `IntroSurvey` read in correctly:
 
 `head()`
  
@@ -65,7 +70,7 @@ Use the following exploration functions to check that the dataframe `TDM` read i
 
 Calculating variables from the Regret and Maximization scales:
 
-Use the code you wrote in your Project 1 to create a new variable for overall Regret score in the `TDM` dataframe called `regret_total`.
+Use the code you wrote in your Project 1 to create a new variable for overall Regret score in the `IntroSurvey` dataframe called `regret_total`.
 
 ```{r}
 # Code goes here
@@ -87,7 +92,7 @@ The Maximizing Scale has been shown to divide up into three subscales:
 * Decision Difficulty (`maxi2` & `maxi5`)
 * High Standards (`maxi4` & `maxi6`)
 
-Please assign three new variables in the `TDM` dataframe, each of which represents one subscale: `maxi_as`, `maxi_dd`, and `maxi_hs`. (Hint: you should be averaging the two scores for each.)
+Please assign three new variables in the `IntroSurvey` dataframe, each of which represents one subscale: `maxi_as`, `maxi_dd`, and `maxi_hs`. (Hint: you should be averaging the two scores for each.)
 
 ```{r}
 # Code goes here
@@ -96,7 +101,7 @@ Please assign three new variables in the `TDM` dataframe, each of which represen
 
 # 5.
 
-Use `head()` to check that the following new variables are present in `TDM`:
+Use `head()` to check that the following new variables are present in `IntroSurvey`:
 
 * `regret_total`
 * `maxi_total`
@@ -221,7 +226,7 @@ Let's see if age correlates with birthyear (it should!). The function `cor.test(
 First, we'll save the contents of our correlation test into the variable `cor_age_birthyear` so we can access its contents later. Then, we'll print `cor_age_birthyear` to the console, so we can visually inspect the results of the correlation test.
 
 ```{r}
-cor_age_birthyear <- cor.test(TDM$age, TDM$birthyear, method = "pearson")
+cor_age_birthyear <- cor.test(IntroSurvey$age, IntroSurvey$birthyear, method = "pearson")
 
 cor_age_birthyear
 ```
@@ -331,16 +336,16 @@ Is the score on the Maximizing Scale related to the self-report of tendency to m
 
 We use t-tests to determine if two samples likely come from different populations. Of course, means will always differ somewhat, even if two samples are drawn from the same population. When the t-value is high enough, we conclude that it's unlikely that the two samples actually represent the same population.
 
-The R syntax for a Student's t-test is `t.test(dv ~ iv, data = DataFrame)`. Note that because we're defining the dataframe (for today's assignment, TDM) within the test, we don't need to dollar-sign index it in the names of the DV and IV variables. We can just use the variable name on its own (for example, inside this function, if age were our DV, we only need to call `age`, not `TDM$age`, because `t.test()` already knows to look inside of `TDM`.)
+The R syntax for a Student's t-test is `t.test(dv ~ iv, data = DataFrame)`. Note that because we're defining the dataframe (for today's assignment, IntroSurvey) within the test, we don't need to dollar-sign index it in the names of the DV and IV variables. We can just use the variable name on its own (for example, inside this function, if age were our DV, we only need to call `age`, not `IntroSurvey$age`, because `t.test()` already knows to look inside of `IntroSurvey`.)
 
 ## a. 
 
 Let's start by seeing if our subjects show a difference in age based on handedness. (They shouldn't!)
 
-Note: t-tests can only be run on **two groups.** If there was someone ambidextrous in the dataset, we want to ignore their observations. We can do this by telling R to run on the dataset TDM, but omitting all rows belonging to people whose handedness is ambidextrous.
+Note: t-tests can only be run on **two groups.** If there was someone ambidextrous in the dataset, we want to ignore their observations. We can do this by telling R to run on the dataset IntroSurvey, but omitting all rows belonging to people whose handedness is ambidextrous.
 
 ```{r}
-t_age_handed <- t.test(age ~ handed, data = TDM[!is.na(TDM$handed), ])
+t_age_handed <- t.test(age ~ handed, data = IntroSurvey[!is.na(IntroSurvey$handed), ])
 
 t_age_handed
 ```
@@ -359,7 +364,6 @@ t_age_handed$statistic
 t_age_handed$p.value
 ```
 
-
 ## b.
 
 What about regret--does it differ by gender?
@@ -368,7 +372,6 @@ What about regret--does it differ by gender?
 # Code goes here
 
 ```
-
 
 ## c.
 
@@ -386,10 +389,10 @@ It might be reasonable to expect that people who made their course decisions usi
 The question about decision mode allowed for 4 options (calculation, rule, role, and affect). To do a t-test, we need the variable re-coded as calculation vs. not-calculation. To do this, we'll use the `ifelse()` function. The code below tells R to create a new variable (`dec_mode_2`) whose value
  is `"calc"` if the original variable (`dec_mode`) was calculation-based, and whose value is `"not-calc"` otherwise.
  
-Note: Check that the levels of `TDM$dec_mode` are still correct for your dataset using `summary()`.
+Note: Check that the levels of `IntroSurvey$dec_mode` are still correct for your dataset using `summary()`.
 
 ```{r}
-TDM$dec_mode_2 <- ifelse(TDM$dec_mode == "calculation-based decision mode (e.g., weighing pros and cons of each course against one another)",
+IntroSurvey$dec_mode_2 <- ifelse(IntroSurvey$dec_mode == "calculation-based decision mode (e.g., weighing pros and cons of each course against one another)",
                          "calc",
                          "not-calc")
 ```
@@ -433,17 +436,17 @@ It's best practice to add a new line after each separate layer of your plotting 
 For example, to plot a scatterplot of `age` and `birthyear`, you would use:
 
 ```{r}
-ggplot(TDM, aes(x = birthyear, y = age)) +
+ggplot(IntroSurvey, aes(x = birthyear, y = age)) +
   geom_point(shape = 1) +
   bwtheme
 ```
 
-The `ggplot()` command defines the dataframe (`TDM`) and the "aesthetics" (the x and y variables you want to use). The `geom_point()` command tells `ggplot2` you want to graph points (aka a scatter plot). `shape = 1` tells `ggplot2` to use open circles for each point. `ggplot2` supports several different point shapes in scatter plots, each labeled by a different number. You can experiment with different shapes by changing the number, if you'd like.
+The `ggplot()` command defines the dataframe (`IntroSurvey`) and the "aesthetics" (the x and y variables you want to use). The `geom_point()` command tells `ggplot2` you want to graph points (aka a scatter plot). `shape = 1` tells `ggplot2` to use open circles for each point. `ggplot2` supports several different point shapes in scatter plots, each labeled by a different number. You can experiment with different shapes by changing the number, if you'd like.
 
 One useful thing to add to a scatterplot is a linear regression line. (The correlation between x and y is the same as a linear regression with only one predictor variable.) We'll do this with `geom_smooth()`.
 
 ```{r}
-ggplot(TDM, aes(x = birthyear, y = age)) +
+ggplot(IntroSurvey, aes(x = birthyear, y = age)) +
   geom_point(shape = 1) +
   geom_smooth(method = lm) +
   bwtheme
@@ -454,7 +457,7 @@ By default, `geom_smooth()` will graph the 95% confidence interval (CI) for your
 Earlier, you found the correlation between regret and maximizing. Let's graph that now. This time, we'll add a title by adding an additional layer in our `ggplot` call, and we'll also edit the x and y axis labels so that they're a little more informative than our shorthand variable names.
 
 ```{r}
-ggplot(TDM, aes(x = maxi_total, y = regret_total)) +
+ggplot(IntroSurvey, aes(x = maxi_total, y = regret_total)) +
   geom_point(shape = 1) +
   geom_smooth(method = lm) +
   # labs() lets you modify various labels in a ggplot
@@ -475,13 +478,12 @@ You can copy and paste code from the previous sections, above, but remember to c
 
 ```
 
-
 # 11.
 
 Now let's make a box plot, which is a clean way to illustrate the centers and spreads of multiple categories (e.g., the two groups you're comparing with a t-test) . We'll graph this in the same way as we made the scatter plot, but this time instead of using `geom_point()` to create a scatter plot we'll use `geom_boxplot()` to generate a box plot.
 
 ```{r}
-ggplot(TDM, aes(x = handed, y = age)) +
+ggplot(IntroSurvey, aes(x = handed, y = age)) +
   geom_boxplot() +
   bwtheme  
 ```
@@ -491,7 +493,7 @@ ggplot(TDM, aes(x = handed, y = age)) +
 If you want to add the points over the boxplots (a good habit, so that your reader can see where the individual values fall, in addition to the summary statistics), you can easily do this by adding another layer on top of `geom_boxplot()` using something like `geom_point(size = 3, alpha = .5)`. The alpha value is opacity (transparency), where larger fractions (closer to 1) are more opaque and lower fractions (closer to 0) are more transparent.
 
 ```{r}
-ggplot(TDM, aes(x = handed, y = age)) +
+ggplot(IntroSurvey, aes(x = handed, y = age)) +
   geom_boxplot() +
   geom_point(size = 3, alpha = .3) +
   bwtheme
@@ -500,7 +502,7 @@ ggplot(TDM, aes(x = handed, y = age)) +
 If you want to change the order of the x-axis labels, or change their text, you can change these with various arguments within `scale_x_discrete()`. There are several functions you can use to modify the behavior of x-axes and y-axes. In this case, because the x variable is categorical, `scale_x_discrete()` is the appropriate function to use.
 
 ```{r}
-ggplot(TDM, aes(x=handed, y=age)) +
+ggplot(IntroSurvey, aes(x=handed, y=age)) +
   geom_boxplot() +
   geom_point(size = 3, alpha = .3) +
   bwtheme   +
@@ -515,7 +517,7 @@ Below, the `geom_point()` line has been commented out so it won't run. R will sk
 Since both of these commands alter the way points are plotted by `ggplot2`, you should only use _one at a time._
 
 ```{r}
-ggplot(TDM, aes(x=handed, y=age)) +
+ggplot(IntroSurvey, aes(x=handed, y=age)) +
   geom_boxplot() +
   # geom_point(size = 3, alpha = .3) +
   geom_jitter(position=position_jitter(width=.1, height=0)) +
