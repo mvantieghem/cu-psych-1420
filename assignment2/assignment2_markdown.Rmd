@@ -74,7 +74,11 @@ Use the code you wrote in your Project 1 to create a new variable for overall Re
 
 ```{r}
 # Code goes here
-
+IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1,
+                                           IntroSurvey$regret2,
+                                           IntroSurvey$regret3,
+                                           IntroSurvey$regret4,
+                                           IntroSurvey$regret5))
 ```
 
 You'll take a similar approach to calculating an overall Maximizing score from the six items we took from the short version of the Maximizing Scale. They are called `maxi1`, `maxi2`, `maxi3`, etc.
