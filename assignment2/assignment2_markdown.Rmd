@@ -20,11 +20,11 @@ if (!require(ggplot2)) {
 
 While R can do a lot of amazing stuff on its own, some special types of analysis or graphing can be more easily (or stylishly) done using one of a (huge) number of "packages" that people have created specially for R. Think of R as your phone, and the packages as apps that each allow the phone to do something extra.
 
-To use a package, you have to install it (once), and then load it (every time you re-open RStudio). Running the Swirl lesson for assignment 2 should have automatically installed a couple packages for you that you'll need for this lesson.
+To use a package, you have to install it (once), and then load it (every time you re-open RStudio).
 
 # 1.
 
-Check your working directory using `getwd()`. If you opened RStudio via the R project file in the same directory that contains your datafile (classdata_2018.csv) and your R scripts, you should be in that folder now.
+Check your working directory using `getwd()`. If you opened RStudio via the R project file in the same directory that contains your datafile (`classdata_2018.csv`) and your R scripts, you should be in that folder now.
 
 ```{r}
 # Code goes here
@@ -70,7 +70,7 @@ Use the following exploration functions to check that the dataframe `IntroSurvey
 
 Calculating variables from the Regret and Maximization scales:
 
-Use the code you wrote in your Project 1 to create a new variable for overall Regret score in the `IntroSurvey` dataframe called `regret_total`.
+Run the code below to create a new variable for overall Regret score in the `IntroSurvey` dataframe called `regret_total`. (This is the same `regret_total` that we calculated at the end of Assignment 1.)
 
 ```{r}
 # Code goes here
@@ -349,7 +349,7 @@ Let's start by seeing if our subjects show a difference in age based on handedne
 Note: t-tests can only be run on **two groups.** If there was someone ambidextrous in the dataset, we want to ignore their observations. We can do this by telling R to run on the dataset IntroSurvey, but omitting all rows belonging to people whose handedness is ambidextrous.
 
 ```{r}
-t_age_handed <- t.test(age ~ handed, data = IntroSurvey[!is.na(IntroSurvey$handed), ])
+t_age_handed <- t.test(age ~ handed, data = IntroSurvey[IntroSurvey$handed != "A", ])
 
 t_age_handed
 ```
