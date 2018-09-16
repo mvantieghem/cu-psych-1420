@@ -83,7 +83,7 @@ IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1,
 
 You'll take a similar approach to calculating an overall Maximizing score from the six items we took from the short version of the Maximizing Scale. They are called `maxi1`, `maxi2`, `maxi3`, etc.
 
-First, assign a new variable called `maxi_total` that is the average of all six `maxi` scores (if you need help, see Project 1's code for calculating the mean regret score).
+First, assign a new variable called `maxi_total` that is the average of all six `maxi` scores (if you need help, see the code above for calculating the mean regret score).
 
 ```{r}
 # Code goes here
@@ -467,8 +467,7 @@ ggplot(IntroSurvey, aes(x = maxi_total, y = regret_total)) +
   # labs() lets you modify various labels in a ggplot
   labs(title = "Regret as a Function of Maximizing Tendency",
        x = "tendency to maximize",
-       y = "tendency toward regret")
-  ylab() +
+       y = "tendency toward regret") +
   bwtheme
 ```
 
@@ -511,7 +510,8 @@ ggplot(IntroSurvey, aes(x=handed, y=age)) +
   geom_point(size = 3, alpha = .3) +
   bwtheme   +
   scale_x_discrete(limits = c("L", "R", "A"), # limits re-orders the three bars
-                   labels = c("Left", "Right", "Ambi")) # labels changes text. Make sure these are specified in the correct order!
+                   # labels changes text. Make sure these are specified in the correct order!
+                   labels = c("Left", "Right", "Ambi"))
 ```
 
 Finally, if making the points transparent doesn't solve the problem of telling overlapping points apart, you can "jitter" the location of each point horizontally by using `geom_jitter()` in place of `geom_point()`. This adds a little bit of random noise to each point's location, which makes it so that points which were on top of each other are now slightly offset.
@@ -539,6 +539,6 @@ Now, please create one new box plot that shows any of our continuous DVs as a fu
 
 # Submitting this assignment
 
-When saving an R Markdown, you can either save it as a text-based file so you can keep editing it and running the code inside later, or you can export it as a final document that anyone can read without opening RStudio. Exporting an R Markdown is called "knitting." To knit your file, click the "Knit" button at the top of your Editor pane, and click "Knit to HTML." Once the HTML document finishes exporting, it should save into the same directory as your original R markdown file. Rename this HTML document with a **new filename** that _includes your own name,_ e.g. R_Project_2_Hale_Forster.html or R_Project_2_Maneeza_Dawood.html .
+When saving an R Markdown, you can either save it as a text-based file so you can keep editing it and running the code inside later, or you can export it as a final document that anyone can read without opening RStudio. Exporting an R Markdown is called "knitting." To knit your file, click the "Knit" button at the top of your Editor pane, and click "Knit to HTML." Once the HTML document finishes exporting, it should save into the same directory as your original R markdown file. Rename this HTML document with a **new filename** that _includes your own name,_ e.g. R_Project_2_Jonathan_Nicholas.html or R_Project_2_Maneeza_Dawood.html .
 
 To get credit for this assignment, upload your completed "knitted" HTML to the Assignments section of Canvas for UN1490.
