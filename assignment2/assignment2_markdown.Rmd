@@ -20,11 +20,11 @@ if (!require(ggplot2)) {
 
 While R can do a lot of amazing stuff on its own, some special types of analysis or graphing can be more easily (or stylishly) done using one of a (huge) number of "packages" that people have created specially for R. Think of R as your phone, and the packages as apps that each allow the phone to do something extra.
 
-To use a package, you have to install it (once), and then load it (every time you re-open RStudio). Running the Swirl lesson for assignment 2 should have automatically installed a couple packages for you that you'll need for this lesson.
+To use a package, you have to install it (once), and then load it (every time you re-open RStudio).
 
 # 1.
 
-Check your working directory using `getwd()`. If you opened RStudio via the R project file in the same directory that contains your datafile (classdata_2018.csv) and your R scripts, you should be in that folder now.
+Check your working directory using `getwd()`. If you opened RStudio via the R project file in the same directory that contains your datafile (`classdata_2018.csv`) and your R scripts, you should be in that folder now.
 
 ```{r}
 # Code goes here
@@ -70,16 +70,20 @@ Use the following exploration functions to check that the dataframe `IntroSurvey
 
 Calculating variables from the Regret and Maximization scales:
 
-Use the code you wrote in your Project 1 to create a new variable for overall Regret score in the `IntroSurvey` dataframe called `regret_total`.
+Run the code below to create a new variable for overall Regret score in the `IntroSurvey` dataframe called `regret_total`. (This is the same `regret_total` that we calculated at the end of Assignment 1.)
 
 ```{r}
 # Code goes here
-
+IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1,
+                                           IntroSurvey$regret2,
+                                           IntroSurvey$regret3,
+                                           IntroSurvey$regret4,
+                                           IntroSurvey$regret5))
 ```
 
 You'll take a similar approach to calculating an overall Maximizing score from the six items we took from the short version of the Maximizing Scale. They are called `maxi1`, `maxi2`, `maxi3`, etc.
 
-First, assign a new variable called `maxi_total` that is the average of all six `maxi` scores (if you need help, see Project 1's code for calculating the mean regret score).
+First, assign a new variable called `maxi_total` that is the average of all six `maxi` scores (if you need help, see the code above for calculating the mean regret score).
 
 ```{r}
 # Code goes here
@@ -338,7 +342,7 @@ Let's start by seeing if our subjects show a difference in age based on handedne
 Note: t-tests can only be run on **two groups.** If there was someone ambidextrous in the dataset, we want to ignore their observations. We can do this by telling R to run on the dataset IntroSurvey, but omitting all rows belonging to people whose handedness is ambidextrous.
 
 ```{r}
-t_age_handed <- t.test(age ~ handed, data = IntroSurvey[!is.na(IntroSurvey$handed), ])
+t_age_handed <- t.test(age ~ handed, data = IntroSurvey[IntroSurvey$handed != "A", ])
 
 t_age_handed
 ```
@@ -359,7 +363,19 @@ t_age_handed$p.value
 
 ## b.
 
-What about regret--does it differ by gender?
+Next, you'll create and inspect your own t-test objects. This time, let's test for differences in scores by school affiliation (Columbia College/Barnard vs GS/SPS, for example).
+
+Because we need a binary variable in order to run a t-test, here's some code to re-code school affiliation into a binary variable.
+
+To do this, we'll use the `ifelse()` function. The code below tells R to create a new variable (`school_binary`) whose value is `"B_CC"` _if_ the original variable (`school`) was either Barnard or CC, and whose value is `"GS_SPS"` _otherwise._
+
+```{r}
+IntroSurvey$school_binary <- ifelse(IntroSurvey$school %in% c("Barnard", "CC"),
+                                    "B_CC",
+                                    "GS_SPS")
+```
+
+Does regret score differ by school affiliation?
 
 ```{r}
 # Code goes here
@@ -368,7 +384,7 @@ What about regret--does it differ by gender?
 
 ## c.
 
-Does tendency to maximize differ by gender?
+Does tendency to maximize differ by school affiliation?
 
 ```{r}
 # Code goes here
@@ -379,8 +395,7 @@ Does tendency to maximize differ by gender?
 
 It might be reasonable to expect that people who made their course decisions using a calculation-based mode are more likely to be maximizers than those who used an affect- or rule-based mode. So we should see if there's any difference in maximizing between those who used calculation-based modes and those who didn't.
 
-The question about decision mode allowed for 4 options (calculation, rule, role, and affect). To do a t-test, we need the variable re-coded as calculation vs. not-calculation. To do this, we'll use the `ifelse()` function. The code below tells R to create a new variable (`dec_mode_2`) whose value
- is `"calc"` if the original variable (`dec_mode`) was calculation-based, and whose value is `"not-calc"` otherwise.
+The question about decision mode allowed for 4 options (calculation, rule, role, and affect). To do a t-test, we need the variable **re-coded** as calculation vs. not-calculation. To do this, we'll use the `ifelse()` function again. The code below tells R to create a new variable (`dec_mode_2`) whose value is `"calc"` _if_ the original variable (`dec_mode`) was calculation-based, and whose value is `"not-calc"` _otherwise._
  
 Note: Check that the levels of `IntroSurvey$dec_mode` are still correct for your dataset using `summary()`.
 
@@ -456,8 +471,7 @@ ggplot(IntroSurvey, aes(x = maxi_total, y = regret_total)) +
   # labs() lets you modify various labels in a ggplot
   labs(title = "Regret as a Function of Maximizing Tendency",
        x = "tendency to maximize",
-       y = "tendency toward regret")
-  ylab() +
+       y = "tendency toward regret") +
   bwtheme
 ```
 
@@ -500,7 +514,8 @@ ggplot(IntroSurvey, aes(x=handed, y=age)) +
   geom_point(size = 3, alpha = .3) +
   bwtheme   +
   scale_x_discrete(limits = c("L", "R", "A"), # limits re-orders the three bars
-                   labels = c("Left", "Right", "Ambi")) # labels changes text. Make sure these are specified in the correct order!
+                   # labels changes text. Make sure these are specified in the correct order!
+                   labels = c("Left", "Right", "Ambi"))
 ```
 
 Finally, if making the points transparent doesn't solve the problem of telling overlapping points apart, you can "jitter" the location of each point horizontally by using `geom_jitter()` in place of `geom_point()`. This adds a little bit of random noise to each point's location, which makes it so that points which were on top of each other are now slightly offset.
@@ -528,6 +543,6 @@ Now, please create one new box plot that shows any of our continuous DVs as a fu
 
 # Submitting this assignment
 
-When saving an R Markdown, you can either save it as a text-based file so you can keep editing it and running the code inside later, or you can export it as a final document that anyone can read without opening RStudio. Exporting an R Markdown is called "knitting." To knit your file, click the "Knit" button at the top of your Editor pane, and click "Knit to HTML." Once the HTML document finishes exporting, it should save into the same directory as your original R markdown file. Rename this HTML document with a **new filename** that _includes your own name,_ e.g. R_Project_2_Hale_Forster.html or R_Project_2_Maneeza_Dawood.html .
+When saving an R Markdown, you can either save it as a text-based file so you can keep editing it and running the code inside later, or you can export it as a final document that anyone can read without opening RStudio. Exporting an R Markdown is called "knitting." To knit your file, click the "Knit" button at the top of your Editor pane, and click "Knit to HTML." Once the HTML document finishes exporting, it should save into the same directory as your original R markdown file. Rename this HTML document with a **new filename** that _includes your own name,_ e.g. R_Project_2_Jonathan_Nicholas.html or R_Project_2_Maneeza_Dawood.html .
 
 To get credit for this assignment, upload your completed "knitted" HTML to the Assignments section of Canvas for UN1490.
