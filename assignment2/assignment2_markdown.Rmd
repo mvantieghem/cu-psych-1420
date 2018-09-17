@@ -370,7 +370,19 @@ t_age_handed$p.value
 
 ## b.
 
-What about regret--does it differ by gender?
+Next, you'll create and inspect your own t-test objects. This time, let's test for differences in scores by school affiliation (Columbia College/Barnard vs GS/SPS, for example).
+
+Because we need a binary variable in order to run a t-test, here's some code to re-code school affiliation into a binary variable.
+
+To do this, we'll use the `ifelse()` function. The code below tells R to create a new variable (`school_binary`) whose value is `"B_CC"` _if_ the original variable (`school`) was either Barnard or CC, and whose value is `"GS_SPS"` _otherwise._
+
+```{r}
+IntroSurvey$school_binary <- ifelse(IntroSurvey$school %in% c("Barnard", "CC"),
+                                    "B_CC",
+                                    "GS_SPS")
+```
+
+Does regret score differ by school affiliation?
 
 ```{r}
 # Code goes here
@@ -379,7 +391,7 @@ What about regret--does it differ by gender?
 
 ## c.
 
-Does tendency to maximize differ by gender?
+Does tendency to maximize differ by school affiliation?
 
 ```{r}
 # Code goes here
@@ -390,8 +402,7 @@ Does tendency to maximize differ by gender?
 
 It might be reasonable to expect that people who made their course decisions using a calculation-based mode are more likely to be maximizers than those who used an affect- or rule-based mode. So we should see if there's any difference in maximizing between those who used calculation-based modes and those who didn't.
 
-The question about decision mode allowed for 4 options (calculation, rule, role, and affect). To do a t-test, we need the variable re-coded as calculation vs. not-calculation. To do this, we'll use the `ifelse()` function. The code below tells R to create a new variable (`dec_mode_2`) whose value
- is `"calc"` if the original variable (`dec_mode`) was calculation-based, and whose value is `"not-calc"` otherwise.
+The question about decision mode allowed for 4 options (calculation, rule, role, and affect). To do a t-test, we need the variable **re-coded** as calculation vs. not-calculation. To do this, we'll use the `ifelse()` function again. The code below tells R to create a new variable (`dec_mode_2`) whose value is `"calc"` _if_ the original variable (`dec_mode`) was calculation-based, and whose value is `"not-calc"` _otherwise._
  
 Note: Check that the levels of `IntroSurvey$dec_mode` are still correct for your dataset using `summary()`.
 
