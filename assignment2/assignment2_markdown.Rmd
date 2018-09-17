@@ -295,13 +295,6 @@ Let's see if maximizing correlates with various measures of course-selection beh
 
 ```
 
-`time_spent`
-
-```{r}
-# Code goes here
-
-```
-
 ## d.
 
 Is the regret score, as calculated by the Regret Scale, correlated with our students' self-reports of regret (`process_regret` and `outcome_regret`)?
