@@ -2,25 +2,89 @@
 title: "Psych 1490, Assignment 2"
 author: "Monica Thieu"
 date: "August 27, 2018"
-output: html_document
+output:
+  html_document:
+    toc: true
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
-# Determine pkg installation status and load
-if (!require(ggplot2)) {
-  install.packages(ggplot2)
-} else {
-  require(ggplot2)
-}
 ```
 
 # 0.
 
+## How to use R Markdown documents
+
+This file is an R Markdown file. This is a special file that lets you write R code and run it, while also writing descriptive text (like this) about the code and analyses you have in between.
+
+Every time you see a special colored block, like the one below, **that's where you can write and run R code.** This is called an **R code chunk.** You can type normal R code in the box, with _one command per line,_ and then run all the code in the box by pressing the green triangle (kind of looks like a play button) in the top right-hand corner of the chunk.
+
+Try playing the code below to see what happens!
+
+```{r}
+my_variable <- 2 + 2
+```
+
+You should see in your Environment pane (top right-hand of RStudio window) now that you have a variable called `my_variable`, just as if you had typed that code into the console (bottom left-hand of RStudio window, where you did Assignment 1 in Swirl) and pressed Enter to run it there.
+
+You can also use chunks to print out outputs in your document. These outputs will be included when you export the document later, so your TA will be able to see the results of all your R code.
+
+For example, run the following code below using the green play button and see what happens:
+
+```{r}
+my_variable
+```
+
+Now, the value assigned to `my_variable` appears in the document. Handy! You'll be using this later to show the output of correlations and t-tests, as well as graphs you'll be making.
+
+For every question in this assignment, every time you see an _empty_ code chunk, you will be expected to _type correct code into the chunk and run it._ We've already created code chunks for every question, so you can fill in the appropriate code in each section.
+
+Every empty chunk you should fill in is marked with a **comment** that says "Code goes here". A comment is a special small note you can leave next to R code inside of a code chunk. You have to tell R that it's a comment, and not real code, by typing the pound/hashtag-sign # _before_ anything in your comment.
+
+```{r}
+# This will not run.
+# If you press the green play button on this chunk, nothing should come out!
+```
+
+Any text after a # is not "seen" as code by R until the next line break. RStudio shows this kind of "comment text" in green (or another color, depending on your color scheme).
+
+You can comment whole lines, if you want to type complete sentences in your notes. You can also add comments at the end of a line, if you want a comment to apply to a specific line of code.
+
+```{r}
+# The code BEFORE the # runs, and the text AFTER the # doesn't run.
+2 + 2 # This should still output 4 because 2 + 2 is before the comment sign
+```
+
+We recommend only typing small "notes to self" in the comments inside code chunks. You can type anything longer than a couple sentences in the "normal text" part of your document, so that it will look like normal text when you export your document later.
+
+## Packages
+
 While R can do a lot of amazing stuff on its own, some special types of analysis or graphing can be more easily (or stylishly) done using one of a (huge) number of "packages" that people have created specially for R. Think of R as your phone, and the packages as apps that each allow the phone to do something extra.
 
 To use a package, you have to install it (once), and then load it (every time you re-open RStudio).
+
+In this assignment, we'll need the assistance of two packages in particular:
+
+* `ggplot2` is the package we'll use to make clean, attractive graphs
+* `knitr` is the package we'll use to export this homework assignment to a format you can upload to Canvas
+
+First, you can use the code below to install these two packages if you haven't already.
+
+```{r, eval = FALSE}
+# Only run this code if you HAVEN'T already installed these packages!
+install.packages(c("ggplot2",
+                   "knitr"))
+```
+
+Next, use the following code to _load,_ or "turn on", these packages for the current RStudio window so you can actually access the functions inside. You need to do this every time you open a new RStudio window!
+
+```{r}
+# We only need to "turn on" ggplot2
+# knitr actually works behind the scenes already!
+library(ggplot2)
+```
+
+Now, we're ready to get started.
 
 # 1.
 
@@ -30,7 +94,6 @@ Check your working directory using `getwd()`. If you opened RStudio via the R pr
 # Code goes here
 
 ```
-
 
 # 2.
 
@@ -73,7 +136,6 @@ Calculating variables from the Regret and Maximization scales:
 Run the code below to create a new variable for overall Regret score in the `IntroSurvey` dataframe called `regret_total`. (This is the same `regret_total` that we calculated at the end of Assignment 1.)
 
 ```{r}
-# Code goes here
 IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1,
                                            IntroSurvey$regret2,
                                            IntroSurvey$regret3,
@@ -514,7 +576,8 @@ ggplot(IntroSurvey, aes(x=handed, y=age)) +
   geom_point(size = 3, alpha = .3) +
   bwtheme   +
   scale_x_discrete(limits = c("L", "R", "A"), # limits re-orders the three bars
-                   # labels changes text. Make sure these are specified in the correct order!
+                   # labels changes text.
+                   # Make sure these are specified in the correct order!
                    labels = c("Left", "Right", "Ambi"))
 ```
 
@@ -543,6 +606,6 @@ Now, please create one new box plot that shows any of our continuous DVs as a fu
 
 # Submitting this assignment
 
-When saving an R Markdown, you can either save it as a text-based file so you can keep editing it and running the code inside later, or you can export it as a final document that anyone can read without opening RStudio. Exporting an R Markdown is called "knitting." To knit your file, click the "Knit" button at the top of your Editor pane, and click "Knit to HTML." Once the HTML document finishes exporting, it should save into the same directory as your original R markdown file. Rename this HTML document with a **new filename** that _includes your own name,_ e.g. R_Project_2_Jonathan_Nicholas.html or R_Project_2_Maneeza_Dawood.html .
+When saving an R Markdown, you can either save it as a text-based file so you can keep editing it and running the code inside later, or you can export it as a final document that anyone can read without opening RStudio. Exporting an R Markdown is called "knitting." To knit your file, click the "Knit" button at the top of your Editor pane, and click "Knit to HTML." Once the HTML document finishes exporting, it should save into the same directory as your original R Markdown file. Rename this HTML document with a **new filename** that _includes your own name,_ e.g. R_Project_2_Jonathan_Nicholas.html or R_Project_2_Maneeza_Dawood.html .
 
 To get credit for this assignment, upload your completed "knitted" HTML to the Assignments section of Canvas for UN1490.
