@@ -1,7 +1,7 @@
 ---
 title: "Psych 1490, Assignment 2"
-author: "Monica Thieu"
-date: "August 27, 2018"
+author: "YOUR NAME HERE!"
+date: "DATE OF SUBMISSION HERE!"
 output:
   html_document:
     toc: true
