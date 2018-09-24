@@ -133,7 +133,7 @@ Use the following exploration functions to check that the dataframe `IntroSurvey
 
 Calculating variables from the Regret and Maximization scales:
 
-Run the code below to create a new variable for overall Regret score in the `IntroSurvey` dataframe called `regret_total`. (This is the same `regret_total` that we calculated at the end of Assignment 1.)
+Run the code below to create a new variable for overall Regret Score per the Regret Scale in the `IntroSurvey` dataframe called `regret_total`. (This is the same `regret_total` that we calculated at the end of Assignment 1.)
 
 ```{r}
 IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1,
@@ -184,28 +184,54 @@ Now we can start doing some real data analysis! For the purposes of getting prac
 
 Let's start with some simple descriptive statistics on our new variables. Use `mean()` and `sd()` to find the mean and standard deviations for:
 
-total regret
+total regret score
 
 ```{r}
 # Code goes here
 
 ```
 
-total maximizing
+total maximizing score
 
 ```{r}
 # Code goes here
 
 ```
 
-each of the maxi subscales. 
+each of the 3 maxi subscales. 
 
 ```{r}
 # Code goes here
 
 ```
 
-Use `hist()` to visualize the range of scores for each of the variables above.
+```{r}
+# Code goes here
+
+```
+
+```{r}
+# Code goes here
+
+```
+
+Use `hist()` to visualize the range of scores for each of the variables you just calculated the mean and standard deviation for:
+
+total regret score
+
+```{r}
+# Code goes here
+
+```
+
+total maximizing score
+
+```{r}
+# Code goes here
+
+```
+
+each of the 3 maxi subscales
 
 ```{r}
 # Code goes here
@@ -232,13 +258,6 @@ Use `summary()` to get a summary of some of our _categorical_ variables (variabl
 ```
 
 `school`
-
-```{r}
-# Code goes here
-
-```
-
-`gender`
 
 ```{r}
 # Code goes here
@@ -363,12 +382,16 @@ Let's see if maximizing correlates with various measures of course-selection beh
 
 ## d.
 
-Is the regret score, as calculated by the Regret Scale, correlated with our students' self-reports of regret (`process_regret` and `outcome_regret`)?
+Is the regret score (`regret_total`), as calculated by the Regret Scale, correlated with either of our students' self-reports of regret:
+
+`process_regret`?
 
 ```{r}
 # Code goes here
 
 ```
+
+`outcome_regret`?
 
 ```{r}
 # Code goes here
@@ -384,7 +407,7 @@ What about `regret_general`?
 
 ## e.
 
-Is the score on the Maximizing Scale related to the self-report of tendency to maximize (`maxi_general`)?
+Is the score on the Maximizing Scale (`maxi_total`) related to the self-report of tendency to maximize (`maxi_general`)?
 
 ```{r}
 # Code goes here
