@@ -38,3 +38,6 @@ rsconnect/
 
 # Mac OS random files
 .DS_Store
+
+# Monica's section-specific stuff
+ignore/*
