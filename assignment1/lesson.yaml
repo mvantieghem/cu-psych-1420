@@ -43,7 +43,7 @@
   Output: 'We also need to tell R to store the info from the file in an R object so we can work with the data. We''ll do this using the left-arrow operator, <- , to take the data on the RIGHT side, and save it into the label name on the LEFT side. Then, whenever we want to access the data, we just need to tell R the label name and the data will be there.'
 
 - Class: cmd_question
-  Output: 'Read this CSV data file into R by entering the following command: IntroSurvey <- read.csv("classdata_2018.csv")'
+  Output: 'Read this CSV data file into R by entering the following command: IntroSurvey <- read.csv("class_survey1_spring2019.csv")'
   CorrectAnswer: IntroSurvey <- read.csv("class_survey1_spring2019.csv")
   AnswerTests: omnitest(correctExpr = 'IntroSurvey <- read.csv("class_survey1_spring2019.csv")')
   Hint: 'Copy the following command and press Enter to run: IntroSurvey <- read.csv("class_survey1_spring2019.csv")'
