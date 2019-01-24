@@ -172,13 +172,13 @@
   Output: 'Accessing individual pieces of a larger dataframe, whether it be rows, columns, or single values, is called INDEXING. To index a column in a dataframe, we can''t just type the name of the column. We need to pull the column out of the dataframe it''s in, using a $.'
 
 - Class: text
-  Output: 'For example, to look at the age column in IntroSurvey, we need to type the following: IntroSurvey$age . In R, you use the $ as you would the / for webpages within a website, or file paths on a computer. It allows you to index a column that''s stored inside of a dataframe.'
+  Output: 'For example, to look at the Age column in IntroSurvey, we need to type the following: IntroSurvey$Age . In R, you use the $ as you would the / for webpAges within a website, or file paths on a computer. It allows you to index a column that''s stored inside of a dataframe.'
 
 - Class: cmd_question
-  Output: 'Enter the following command and inspect the output: IntroSurvey$age'
-  CorrectAnswer: IntroSurvey$age
-  AnswerTests: omnitest(correctExpr = 'IntroSurvey$age')
-  Hint: 'Copy the following command and press Enter to run: IntroSurvey$age'
+  Output: 'Enter the following command and inspect the output: IntroSurvey$Age'
+  CorrectAnswer: IntroSurvey$Age
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$Age')
+  Hint: 'Copy the following command and press Enter to run: IntroSurvey$Age'
 
 - Class: cmd_question
   Output: 'Index any column in IntroSurvey using the dollar sign $ operator.'
@@ -206,13 +206,13 @@
   
 - Class: cmd_question
   Output: 'Create a quick histogram of your first numeric column in IntroSurvey using hist().'
-  CorrectAnswer: hist(IntroSurvey$age)
+  CorrectAnswer: hist(IntroSurvey$Age)
   AnswerTests: expr_uses_func('hist')
   Hint: 'Enter hist(IntroSurvey$...), where ... is the name of your numeric column in IntroSurvey, into console and press Enter.'
   
 - Class: cmd_question
   Output: 'Create a quick histogram of your second numeric column in IntroSurvey using hist().'
-  CorrectAnswer: hist(IntroSurvey$age)
+  CorrectAnswer: hist(IntroSurvey$Age)
   AnswerTests: expr_uses_func('hist')
   Hint: 'Enter hist(IntroSurvey$...), where ... is the name of your numeric column in IntroSurvey, into console and press Enter.'
   
@@ -221,13 +221,13 @@
 
 - Class: cmd_question
   Output: 'Call summary() on a numeric column in IntroSurvey and inspect the output.'
-  CorrectAnswer: summary(IntroSurvey$age)
+  CorrectAnswer: summary(IntroSurvey$Age)
   AnswerTests: expr_uses_func('summary'); result_has_type('numeric')
   Hint: 'Enter summary(IntroSurvey$...), where ... is the name of your numeric column in IntroSurvey, into console and press Enter.'
 
 - Class: cmd_question
   Output: 'Call summary() on a factor column in IntroSurvey and inspect the output.'
-  CorrectAnswer: summary(IntroSurvey$age)
+  CorrectAnswer: summary(IntroSurvey$Age)
   AnswerTests: expr_uses_func('summary'); result_has_type('integer')
   Hint: 'Enter summary(IntroSurvey$...), where ... is the name of your factor column in IntroSurvey, into console and press Enter.  If you are not sure which columns are factor, enter str(IntroSurvey) and inspect the output for columns that say "Factor".'
   
@@ -235,34 +235,34 @@
   Output: 'Now, let''s find specific descriptive statistics about specific columns in our data.'
 
 - Class: cmd_question
-  Output: 'Use the function mean() to find the mean age of students in the dataframe.'
-  CorrectAnswer: mean(IntroSurvey$age)
-  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$age)')
-  Hint: 'Call the function mean() on the age column in IntroSurvey by entering the following into console: mean(IntroSurvey$age)'
+  Output: 'Use the function mean() to find the mean Age of students in the dataframe.'
+  CorrectAnswer: mean(IntroSurvey$Age)
+  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$Age)')
+  Hint: 'Call the function mean() on the Age column in IntroSurvey by entering the following into console: mean(IntroSurvey$Age)'
   
 - Class: text
   Output: 'Why does it say NA? This means "not available." R is telling you it can''t compute a mean. This happens when you have one or more missing values.'
 
 - Class: cmd_question
-  Output: Look at the full contents of the age column of IntroSurvey in console to see if there is missing data in the column.
-  CorrectAnswer: IntroSurvey$age
-  AnswerTests: omnitest(correctExpr = 'IntroSurvey$age')
-  Hint: To output the full contents of the age column to console, index the column from IntroSurvey by entering IntroSurvey$age into console.
+  Output: Look at the full contents of the Age column of IntroSurvey in console to see if there is missing data in the column.
+  CorrectAnswer: IntroSurvey$Age
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$Age')
+  Hint: To output the full contents of the Age column to console, index the column from IntroSurvey by entering IntroSurvey$Age into console.
   
 - Class: text
-  Output: You should see that a couple values in IntroSurvey$age are not numbers, but NA. This means that, for whatever reason in this data, some subjects have missing age data. Rats! mean(), and many other functions, will not compute if they see missing values (NA). But you can tell them to ignore missing values and compute using the rest of the data. Inside of mean(), the argument na.rm = TRUE will tell mean() to throw out missing values and compute using the remaining data.'
+  Output: You should see that a couple values in IntroSurvey$Age are not numbers, but NA. This means that, for whatever reason in this data, some subjects have missing Age data. Rats! mean(), and many other functions, will not compute if they see missing values (NA). But you can tell them to ignore missing values and compute using the rest of the data. Inside of mean(), the argument na.rm = TRUE will tell mean() to throw out missing values and compute using the remaining data.'
   
 - Class: cmd_question
-  Output: 'Add the argument " , na.rm = TRUE" (without the quotes) after the variable name within mean() to find the mean age of students in the dataframe.'
-  CorrectAnswer: mean(IntroSurvey$age, na.rm = TRUE)
-  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$age, na.rm = TRUE)')
-  Hint: 'Call the function mean() on the age column in IntroSurvey by entering the following into console: mean(IntroSurvey$age, na.rm = TRUE)'
+  Output: 'Add the argument " , na.rm = TRUE" (without the quotes) after the variable name within mean() to find the mean Age of students in the dataframe.'
+  CorrectAnswer: mean(IntroSurvey$Age, na.rm = TRUE)
+  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$Age, na.rm = TRUE)')
+  Hint: 'Call the function mean() on the Age column in IntroSurvey by entering the following into console: mean(IntroSurvey$Age, na.rm = TRUE)'
   
 - Class: text
   Output: 'We now know how to index columns in a dataframe using the $ operator. But what if we want to select just some rows in that column? To index partial columns, we will use hard brackets []. Inside the hard brackets, we will tell R which part of the column we want to index.'
 
 - Class: text
-  Output: 'Usually, when we want to index partial dataframe columns, we only want parts of the column that satisfy some conditions. For example, what if we want to index only the class years for all participants who are older than 21 years? We would use the command IntroSurvey$class[IntroSurvey$age > 21] . Inside the hard brackets, we have entered a logical statement. This works because in our dataframe, each row contains the data for a single participant. This means that every value of "class" belongs to the same participant as the value of "age" in the corresponding row of the dataframe. Thus, we can index partial dataframe columns using logical statements about the values of other columns.'
+  Output: 'Usually, when we want to index partial dataframe columns, we only want parts of the column that satisfy some conditions. For example, what if we want to index only the class years for all participants who are older than 21 years? We would use the command IntroSurvey$class[IntroSurvey$Age > 21] . Inside the hard brackets, we have entered a logical statement. This works because in our dataframe, each row contains the data for a single participant. This means that every value of "class" belongs to the same participant as the value of "Age" in the corresponding row of the dataframe. Thus, we can index partial dataframe columns using logical statements about the values of other columns.'
   
 - Class: text
   Output: 'For logical statements on numeric columns, we can use the following operators:'
@@ -283,25 +283,25 @@
   Output: '== , != . These will check if the string (piece of character data) on the left is equal to the string on the right or not.'
   
 - Class: text
-  Output: 'For example, IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"] will index all the values of enrolled courses for female-identified students. Notice that for character data, you need to have quotation marks around the data (e.g. "F") so that R knows that you''re referring to character data.'
+  Output: 'For example, IntroSurvey$Major[IntroSurvey$Gender == "F"] will index all the majors for female-identified students. Notice that for character data, you need to have quotation marks around the data (e.g. "F") so that R knows that you''re referring to character data.'
 
 - Class: cmd_question
-  Output: 'Enter IntroSurvey$Major[IntroSurvey$gender == "F"] to see the majors of your female-identifying classmates.'
-  CorrectAnswer: IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]
-  AnswerTests: omnitest(correctExpr = 'IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]')
-  Hint: 'Copy the following code, paste it into console and press Enter: IntroSurvey$courses_enrolled[IntroSurvey$gender == "F"]'
+  Output: 'Enter IntroSurvey$Major[IntroSurvey$Gender == "F"] to see the majors of your female-identifying classmates.'
+  CorrectAnswer: IntroSurvey$Major[IntroSurvey$Gender == "F"]
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$Major[IntroSurvey$Gender == "F"]')
+  Hint: 'Copy the following code, paste it into console and press Enter: IntroSurvey$Major[IntroSurvey$Gender == "F"]'
   
 - Class: cmd_question
   Output: 'Now, we''ll try another one. Use hard brackets and a logical statement to index the school affiliations of all female participants.'
-  CorrectAnswer: IntroSurvey$school[IntroSurvey$gender == "Female"]
-  AnswerTests: omnitest(correctExpr = 'IntroSurvey$school[IntroSurvey$gender == "Female"]')
-  Hint: 'Call the school column of IntroSurvey, and then hard-bracket index it, with a logical statement on the inside selecting all values of the gender column corresponding to females.'
+  CorrectAnswer: IntroSurvey$school[IntroSurvey$Gender == "Female"]
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$school[IntroSurvey$Gender == "Female"]')
+  Hint: 'Call the school column of IntroSurvey, and then hard-bracket index it, with a logical statement on the inside selecting all values of the Gender column corresponding to females.'
 
 - Class: text
   Output: 'Now, let''s calculate some descriptive statistics on our data! For the next set of questions, each question will have two parts. The first part will ask you to type in the correct code to calculate a particular descriptive statistic. The second part will ask you to type in the correct value of the descriptive statistic. You can enter the number that is output by the answer to the first part of the question to answer the second part of the question.'
   
 - Class: cmd_question
-  Output: 'Enter a command to calculate the mean age of our participants.'
+  Output: 'Enter a command to calculate the mean Age of our participants.'
   CorrectAnswer: mean(IntroSurvey$Age, na.rm = TRUE)
   AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$Age, na.rm = TRUE)')
   Hint: 'Index the Age column of IntroSurvey, and feed it into mean(). Be careful of missing data!'
@@ -313,10 +313,10 @@
   Hint: 'Try using summary() to take a look at the Year column.'
   
 - Class: cmd_question
-  Output: 'Enter a command to calculate the mean age of the juniors.'
+  Output: 'Enter a command to calculate the mean Age of the juniors.'
   CorrectAnswer: mean(IntroSurvey$Age[IntroSurvey$Year == "Junior"])
   AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$Age[IntroSurvey$Year == "Junior"])')
-  Hint: 'Index the Age column of IntroSurvey, but use hard brackets to index only the ages of juniors. Then feed that into mean().'
+  Hint: 'Index the Age column of IntroSurvey, but use hard brackets to index only the Ages of juniors. Then feed that into mean().'
   
 - Class: text
   Output: 'For the last part of this assignment, we''ll create new columns in our dataframe for values calculated from existing columns. For example, you can use this to create columns that contain row-wise means of other columns.'
