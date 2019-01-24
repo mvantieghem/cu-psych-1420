@@ -1,0 +1,92 @@
+---
+title: "Psych 1420, R Assignment on ANOVA"
+author: "YOUR NAME HERE!"
+date: "DATE OF SUBMISSION HERE!"
+output:
+  html_document:
+    toc: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## open class data 
+```{r}
+my_df <- read.csv("../classdata_2018.csv")
+head(my_df)
+```
+
+
+## Recode categorical variables of interest
+```{r}
+library(tidyverse)
+library(corrplot)
+
+cor_df <- my_df %>%
+  select(-time_planning, -dec_mode, -class, -major, -school, -concentration, -gender, -handed)
+
+
+corrplot(cor(cor_df))
+
+
+summary(my_df$school)
+
+# let's simplify our lives by only having 2 school groups
+my_df2 <- my_df %>%
+  filter(school == "CC" | school == "GS")
+
+summary(my_df2$gender)
+# again, let's simplify our lives by only having m/f
+
+my_df2 <- my_df2 %>%
+  filter(gender == "F" | gender == "M")
+
+```
+
+## T-test with 2 groups (between subjects)
+Interpret this output. Are there differences in Y based on X?
+```{r}
+t.test(outcome_regret ~ school, data = my_df2)
+
+```
+
+## One-way anova with 2 groups (between subjects)
+School has 2 categories: CC and GS
+We will test whether school (CC vs. GS) influences outcome regret. 
+```{r}
+one_way_anova <- aov(outcome_regret ~ school, data = my_df2)
+summary(one_way_anova)
+```
+Interpret the output. Are there differences in Y based on X? 
+Impt note: one-way anova with 2 groups is identical to a t-test! 
+
+
+
+
+
+## One-way anova with 3 groups (between subjects)
+
+
+## Two-way anova with 2 categorical variables (between subjects)
+```{r}
+two_way_anova <- aov(outcome_regret ~ school*gender, data = my_df2)
+summary(two_way_anova)
+```
+
+
+### anova is really a linear model with categorical X variables!
+check that the output is identical. 
+```{r}
+linear_model <- lm(outcome_regret ~ age*reader, data = my_df2)
+anova(linear_model)
+```
+
+### this is useful if you want to run an ANCOVA:
+include covariates (continuous X variables) to control for in your anova.
+For example, I want to test the 2x2 interaction, controlling for age.
+```{r}
+linear_model2 <- lm(maxi_general ~ school*gender + age, data = my_df2)
+anova(linear_model2)
+```
