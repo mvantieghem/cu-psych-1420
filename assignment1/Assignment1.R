@@ -1,6 +1,6 @@
 # Assignment 1 is interactive, so you will receive live feedback as you learn to code.
 # To begin, make sure you are in the cu-psych-1420 R project.
-# Then copy these 3 lines of code into your console and follow the instructions.
+# Then copy these lines of code into your console and follow the instructions.
 
 install("swirlify")
 swirlify::demo_lesson()

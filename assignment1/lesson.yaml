@@ -322,34 +322,34 @@
   Output: 'For the last part of this assignment, we''ll create new columns in our dataframe for values calculated from existing columns. For example, you can use this to create columns that contain row-wise means of other columns.'
   
 - Class: text
-  Output: 'In our dataframe, we will calculate each participant''s score on the "Maximizer Scale" (Schwartz et al., 2002) by averaging the scores on each of 13 different questions (e.g. "maxi1, maxi2")'
+  Output: 'In our dataframe, we will look at the "Maximizer Scale" (Schwartz et al. 2002) which we will be using in future labs. We will calculate each participant''s score by averaging the scores on each of 13 different questions (e.g. "MS1, MS2")'
   
 - Class: text
   Output: 'We can use the function rowMeans() to calculate the mean value for every row of a dataframe. Then, we''ll assign the output of rowMeans() to a new column in IntroSurvey so we can keep everyone''s Maximizer Scale scores with all of their other data.'
   
 - Class: cmd_question
-  Output: 'Run the following command to calculate the mean Maximizer Scale score from the 9 questions: IntroSurvey$maximizer_total <- rowMeans(cbind(IntroSurvey$maxi1, IntroSurvey$maxi2, IntroSurvey$maxi3, IntroSurvey$maxi4, IntroSurvey$maxi5, IntroSurvey$maxi6, IntroSurvey$maxi7, IntroSurvey$maxi8, IntroSurvey$maxi9, IntroSurvey$maxi10, IntroSurvey$maxi11, IntroSurvey$maxi12, IntroSurvey$maxi13))'
-  CorrectAnswer: IntroSurvey$maximizer_total <- rowMeans(cbind(IntroSurvey$maxi1, IntroSurvey$maxi2, IntroSurvey$maxi3, IntroSurvey$maxi4, IntroSurvey$maxi5, IntroSurvey$maxi6, IntroSurvey$maxi7, IntroSurvey$maxi8, IntroSurvey$maxi9, IntroSurvey$maxi10, IntroSurvey$maxi11, IntroSurvey$maxi12, IntroSurvey$maxi13))
-  AnswerTests: omnitest(correctExpr = 'IntroSurvey$maximizer_total <- rowMeans(cbind(IntroSurvey$maxi1, IntroSurvey$maxi2, IntroSurvey$maxi3, IntroSurvey$maxi4, IntroSurvey$maxi5, IntroSurvey$maxi6, IntroSurvey$maxi7, IntroSurvey$maxi8, IntroSurvey$maxi9, IntroSurvey$maxi10, IntroSurvey$maxi11, IntroSurvey$maxi12, IntroSurvey$maxi13))')
-  Hint: 'Copy the following command and paste it into the console: IntroSurvey$maximizer_total <- rowMeans(cbind(IntroSurvey$maxi1, IntroSurvey$maxi2, IntroSurvey$maxi3, IntroSurvey$maxi4, IntroSurvey$maxi5, IntroSurvey$maxi6, IntroSurvey$maxi7, IntroSurvey$maxi8, IntroSurvey$maxi9, IntroSurvey$maxi10, IntroSurvey$maxi11, IntroSurvey$maxi12, IntroSurvey$maxi13))'
+  Output: 'Run the following command to calculate the mean Maximizer Scale score from the 13 questions: IntroSurvey$MS_total <- rowMeans(cbind(IntroSurvey$MS1, IntroSurvey$MS2, IntroSurvey$MS3, IntroSurvey$MS4, IntroSurvey$MS5, IntroSurvey$MS6, IntroSurvey$MS7, IntroSurvey$MS8, IntroSurvey$MS9, IntroSurvey$MS10, IntroSurvey$MS11, IntroSurvey$MS12, IntroSurvey$MS13))'
+  CorrectAnswer: IntroSurvey$MS_total <- rowMeans(cbind(IntroSurvey$MS1, IntroSurvey$MS2, IntroSurvey$MS3, IntroSurvey$MS4, IntroSurvey$MS5, IntroSurvey$MS6, IntroSurvey$MS7, IntroSurvey$MS8, IntroSurvey$MS9, IntroSurvey$MS10, IntroSurvey$MS11, IntroSurvey$MS12, IntroSurvey$MS13))
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$MS_total <- rowMeans(cbind(IntroSurvey$MS1, IntroSurvey$MS2, IntroSurvey$MS3, IntroSurvey$MS4, IntroSurvey$MS5, IntroSurvey$MS6, IntroSurvey$MS7, IntroSurvey$MS8, IntroSurvey$MS9, IntroSurvey$MS10, IntroSurvey$MS11, IntroSurvey$MS12, IntroSurvey$MS13))')
+  Hint: 'Copy the following command and paste it into the console: IntroSurvey$MS_total <- rowMeans(cbind(IntroSurvey$MS1, IntroSurvey$MS2, IntroSurvey$MS3, IntroSurvey$MS4, IntroSurvey$MS5, IntroSurvey$MS6, IntroSurvey$MS7, IntroSurvey$MS8, IntroSurvey$MS9, IntroSurvey$MS10, IntroSurvey$MS11, IntroSurvey$MS12, IntroSurvey$MS13))'
   
 - Class: cmd_question
-  Output: 'Now re-run names() on the IntroSurvey dataframe to check that the new variable is there. maximizer_total should show up in the names.'
+  Output: 'Now re-run names() on the IntroSurvey dataframe to check that the new variable is there. MS_total should show up in the names.'
   CorrectAnswer: names(IntroSurvey)
   AnswerTests: omnitest(correctExpr = 'names(IntroSurvey)')
   Hint: 'Copy the following command and paste it into the console: names(IntroSurvey)'
   
 - Class: exact_question
   Output: 'What is the mean maximizer score for the class?'
-  CorrectAnswer: mean(IntroSurvey$maximizer_total)
-  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$maximizer_total)')
-  Hint: 'Call mean() on the new maximizer_total column.'
+  CorrectAnswer: mean(IntroSurvey$MS_total)
+  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$MS_total)')
+  Hint: 'Call mean() on the new MS_total column.'
   
 - Class: exact_question
   Output: 'What is the mean maximizer score for students in Columbia College?'
   CorrectAnswer: 
-  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$maximizer_total[IntroSurvey$School == "CC"])')
-  Hint: 'Call mean() on the appropriate subset of the maximizer_total column using hard-bracket indexing with a logical statement inside.'
+  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$MS_total[IntroSurvey$School == "CC"])')
+  Hint: 'Call mean() on the appropriate subset of the MS_total column using hard-bracket indexing with a logical statement inside.'
 
 - Class: text
   Output: 'That concludes the first R assignment. Congratulations! Please continue to send an email notification to your TA.'
