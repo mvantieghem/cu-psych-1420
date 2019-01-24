@@ -2,8 +2,9 @@
 # To begin, make sure you are in the cu-psych-1420 R project.
 # Then copy these 3 lines of code into your console and follow the instructions.
 
-install("swirlify")
-swirlify::demo_lesson()
+swirl::install_course_github(github_username = "mvantieghem", course_name = "cu-psych-1420")
+library(swirl)
+swirl() 
 
 # If you don't reach the end of the assignment before the end of lab, you can exit swirl by typing:
 bye() 
