@@ -1,15 +1,15 @@
 # Put custom tests in this file.
-      
-      # Uncommenting the following line of code will disable
-      # auto-detection of new variables and thus prevent swirl from
-      # executing every command twice, which can slow things down.
-      
-      # AUTO_DETECT_NEWVAR <- FALSE
-      
-      # However, this means that you should detect user-created
-      # variables when appropriate. The answer test, creates_new_var()
-      # can be used for for the purpose, but it also re-evaluates the
-      # expression which the user entered, so care must be taken.
+
+# Uncommenting the following line of code will disable
+# auto-detection of new variables and thus prevent swirl from
+# executing every command twice, which can slow things down.
+
+# AUTO_DETECT_NEWVAR <- FALSE
+
+# However, this means that you should detect user-created
+# variables when appropriate. The answer test, creates_new_var()
+# can be used for for the purpose, but it also re-evaluates the
+# expression which the user entered, so care must be taken.
 
 # For checking that calls contain various operators
 # but that aren't called as FUN()
@@ -50,12 +50,12 @@ val_rounded_equals <- function (value, digits = 0) {
 notify <- function() {
   e <- get("e", parent.frame())
   
-  if (e$val == "Jonathan") {
-    address <- "jonathan.nicholas@columbia.edu"
-  } else if (e$val == "Maneeza") {
-    address <- "md2811@columbia.edu"
-  } else if (e$val == "Monica") {
-    address <- "monica.thieu@columbia.edu"
+  if (e$val == "Michelle") {
+    address <- "mrv2115@columbia.edu"
+  } else if (e$val == "Zach") {
+    address <- "zjb2108@columbia.edu"
+  } else if (e$val == "basak") {
+    address <- "ba2496@columbia.edu"
   }
   
   good <- FALSE

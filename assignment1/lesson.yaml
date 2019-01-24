@@ -1,13 +1,13 @@
 - Class: meta
-  Course: cu-psych-1490
+  Course: cu-psych-1420
   Lesson: assignment1
-  Author: Katherine Fox-Glassman, Monica Thieu
+  Author: Michelle VanTieghem, Monica Thieu
   Type: Standard
   Organization: Columbia University Dept of Psychology
   Version: 2.4.3
 
 - Class: text
-  Output: 'Welcome! In this first assignment, we''ll be learning about how to navigate R (and RStudio.) You can use R to do spreadsheet-style table manipulation (like Excel), as well as statistics (like SPSS). While it takes a little bit more time to get the hang of using R, we hope you''ll find it rewarding, and choose to use it in your future research!'
+  Output: 'Welcome to RRRR! In this first assignment, we''ll be learning about how to navigate R (and RStudio.) You can use R to do spreadsheet-style table manipulation (like Excel), as well as statistics (like SPSS). While it takes a little bit more time to get the hang of using R, we hope you''ll find it rewarding, and choose to use it in your future research!'
   
 - Class: text
   Output: 'In this assignment, we will learn how to load in a data file, inspect the data, and do some brief calculations on that data.'
