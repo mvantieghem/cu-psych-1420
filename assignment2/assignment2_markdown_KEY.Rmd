@@ -68,7 +68,7 @@ In this assignment, we'll need the assistance of two packages in particular:
 * `ggplot2` is the package we'll use to make clean, attractive graphs
 * `knitr` is the package we'll use to export this homework assignment to a format you can upload to Canvas
 
-First, you can use the code below to install these two packages if you haven't already.
+First, you can use the code below to install these packages if you haven't already.
 
 ```{r, eval = FALSE}
 # Only run this code if you HAVEN'T already installed these packages!
@@ -88,20 +88,23 @@ Now, we're ready to get started.
 
 # 1.
 
-Check your working directory using `getwd()`. If you opened RStudio via the R project file in the same directory that contains your datafile (`classdata_2018.csv`) and your R scripts, you should be in that folder now.
+Check your working directory using `getwd()`. If you opened RStudio via the R project file in the same directory that contains your datafile (`class_survey2_spring2019.csv`) and your R scripts, you should be in that folder now.
 
 ```{r}
 # Code goes here
+getwd()
 
 ```
 
 # 2.
 
-Read in your data file using `read.csv("classdata_2018.csv")`, and assign it to the dataframe name `IntroSurvey`.
+Read in your data file using `read.csv("class_survey2_spring2019.csv")`, and assign it to the dataframe name `IntroSurvey`.
 
 ```{r}
 # Code goes here
 
+IntroSurvey <- read.csv("class_survey2_spring2019.csv")
+head(IntroSurvey)
 ```
 
 # 3.
@@ -112,13 +115,14 @@ Use the following exploration functions to check that the dataframe `IntroSurvey
  
 ```{r}
 # Code goes here
-
+head(IntroSurvey)
 ```
  
 `summary()`
  
 ```{r}
 # Code goes here
+summary(IntroSurvey)
 
 ```
  
@@ -126,56 +130,55 @@ Use the following exploration functions to check that the dataframe `IntroSurvey
  
 ```{r}
 # Code goes here
+str(IntroSurvey)
 
 ```
 
 # 4.
 
-Calculating variables from the Regret and Maximization scales:
+Calculating variables from the two Maximization scales:
+In this dataset, we now have the original Maximizer Scale (Schwartz et al., 2002) consisting of 13 items that we used last week. We will call this 'MS'. We also have a Maximizing Tendency Scale consisting of 9 items (Iyengar et al., 2006) that you completed in Survey2. We will call this survey 'MTS'. Today we will look at both to compare them. 
 
-Run the code below to create a new variable for overall Regret score in the `IntroSurvey` dataframe called `regret_total`. (This is the same `regret_total` that we calculated at the end of Assignment 1.)
-
-```{r}
-IntroSurvey$regret_total <- rowMeans(cbind(IntroSurvey$regret1,
-                                           IntroSurvey$regret2,
-                                           IntroSurvey$regret3,
-                                           IntroSurvey$regret4,
-                                           IntroSurvey$regret5))
-```
-
-You'll take a similar approach to calculating an overall Maximizing score from the six items we took from the short version of the Maximizing Scale. They are called `maxi1`, `maxi2`, `maxi3`, etc.
-
-First, assign a new variable called `maxi_total` that is the average of all six `maxi` scores (if you need help, see the code above for calculating the mean regret score).
+Run the code below to create a new variable for overall MS in the `IntroSurvey` dataframe called `MTS_total`. (This is the same thing that we calculated at the end of Assignment 1.)
 
 ```{r}
-# Code goes here
-
+IntroSurvey$MS_total <- rowMeans(cbind(IntroSurvey$MS1,IntroSurvey$MS2,
+                                       IntroSurvey$MS3,IntroSurvey$MS4,
+                                       IntroSurvey$MS5,IntroSurvey$MS6,
+                                       IntroSurvey$MS7,IntroSurvey$MS8,
+                                       IntroSurvey$MS9,IntroSurvey$MS10,
+                                       IntroSurvey$MS11,IntroSurvey$MS12,
+                                       IntroSurvey$MS13))
 ```
 
-The Maximizing Scale has been shown to divide up into three subscales:
+You'll take a similar approach to calculating an overall Maximizing Tendency Scale score from the 9 items of the MTS. They are called `MTS1`, `MTS2`, `MTS3`, etc.
 
-* Alternative Search (`maxi1` & `maxi3`)
-* Decision Difficulty (`maxi2` & `maxi5`)
-* High Standards (`maxi4` & `maxi6`)
-
-Please assign three new variables in the `IntroSurvey` dataframe, each of which represents one subscale: `maxi_as`, `maxi_dd`, and `maxi_hs`. (Hint: you should be averaging the two scores for each.)
+First, assign a new variable called `MTS_total` that is the average of all nine `MTS` scores.
 
 ```{r}
 # Code goes here
 
+IntroSurvey$MTS_total <- rowMeans(cbind(IntroSurvey$MTS1,IntroSurvey$MTS2,
+                                       IntroSurvey$MTS3,IntroSurvey$MTS4,
+                                       IntroSurvey$MTS5,IntroSurvey$MTS6,
+                                       IntroSurvey$MTS7,IntroSurvey$MTS8,
+                                       IntroSurvey$MTS9))
+
 ```
+
 
 # 5.
 
 Use `head()` to check that the following new variables are present in `IntroSurvey`:
 
-* `regret_total`
-* `maxi_total`
-* `maxi_as`, `maxi_dd`, & `maxi_hs`
+* `MS_total`
+* `MTS_total`
 
 ```{r}
 # Code goes here
+head(IntroSurvey$MS_total)
 
+head(IntroSurvey$MTS_total)
 ```
 
 # 6.
@@ -184,73 +187,77 @@ Now we can start doing some real data analysis! For the purposes of getting prac
 
 Let's start with some simple descriptive statistics on our new variables. Use `mean()` and `sd()` to find the mean and standard deviations for:
 
-total regret
+MS_total
 
 ```{r}
 # Code goes here
-
+mean(IntroSurvey$MS_total)
+sd(IntroSurvey$MS_total)
 ```
 
-total maximizing
+MTS_total
 
 ```{r}
 # Code goes here
-
+mean(IntroSurvey$MTS_total)
+sd(IntroSurvey$MTS_total)
 ```
 
-each of the maxi subscales. 
+courses_happy
 
 ```{r}
 # Code goes here
-
+mean(IntroSurvey$courses_happy)
+sd(IntroSurvey$courses_happy)
 ```
+
+
+courses_satisfied
+
+```{r}
+# Code goes here
+mean(IntroSurvey$courses_satisfied)
+sd(IntroSurvey$courses_satisfied)
+```
+
 
 Use `hist()` to visualize the range of scores for each of the variables above.
 
 ```{r}
 # Code goes here
-
+hist(IntroSurvey$MS_total)
 ```
 
 ```{r}
 # Code goes here
-
+hist(IntroSurvey$MTS_total)
 ```
 
-```{r}
-# Code goes here
-
-```
 
 Use `summary()` to get a summary of some of our _categorical_ variables (variables that are not numeric, but rather can take on one of a few specified categories):
 
-`class`
+`Year`
 
 ```{r}
 # Code goes here
-
+summary(IntroSurvey$Year)
 ```
 
-`school`
+`School`
 
 ```{r}
 # Code goes here
+summary(IntroSurvey$School)
 
 ```
 
-`gender`
+`Gender`
 
 ```{r}
 # Code goes here
-
+summary(IntroSurvey$Gender)
 ```
 
-`handed`
-
-```{r}
-# Code goes here
-
-```
 
 Explore at least **5** other variables that you think might have a relationship with maximizing and/or regret. If the variable is _numeric_ or _interval_ (i.e., if its responses are numbers), compute the mean and sd, and produce a histogram. If the variable is _categorical_, produce a summary.
 
@@ -285,16 +292,16 @@ Now that you have a sense for what the data show, let's look at how some of the 
 
 ## a.
 
-Let's see if age correlates with birthyear (it should!). The function `cor.test()` allows us to put in two variables, see what their correlation is, and return a p-value for that correlation.
+Let's see if age correlates with Year in school. The function `cor.test()` allows us to put in two variables, see what their correlation is, and return a p-value for that correlation.
 
 `cor.test()` allows you to run a Pearson, Kendall, or Spearman correlation, depending on what you tell it to do using the argument `method`. This time, since we just want to do a Pearson correlation, we'll use `method = "pearson"`.
 
-First, we'll save the contents of our correlation test into the variable `cor_age_birthyear` so we can access its contents later. Then, we'll print `cor_age_birthyear` to the console, so we can visually inspect the results of the correlation test.
+First, we'll save the contents of our correlation test into the variable `cor_age_school` so we can access its contents later. Then, we'll print `cor_age_school` to the console, so we can visually inspect the results of the correlation test.
 
 ```{r}
-cor_age_birthyear <- cor.test(IntroSurvey$age, IntroSurvey$birthyear, method = "pearson")
+cor_age_school <- cor.test(IntroSurvey$Age, IntroSurvey$School, method = "pearson")
 
-cor_age_birthyear
+cor_age_school
 ```
 
 Above, you can see the r-value, p-value, and several other pieces of info about the correlation test. These statistics are actually saved as variables _inside of_ the correlation test object. To extract these statistics and report them, we can use the dollar sign `$` to index these statistics, similar to indexing columns in a dataframe.
@@ -302,13 +309,13 @@ Above, you can see the r-value, p-value, and several other pieces of info about 
 To index the Pearson's r for this test, we can look for the sub-variable called `estimate`:
 
 ```{r}
-cor_age_birthyear$estimate
+cor_age_school$estimate
 ```
 
 And to index the p-value, we can call the sub-variable `p.value`:
 
 ```{r}
-cor_age_birthyear$p.value
+cor_age_school$p.value
 ```
 
 Now, we can use these variable names to refer to the Pearson's r and p-value of this correlation test. You don't have to look at the numbers and copy them over!
@@ -317,28 +324,28 @@ PS: In RStudio, if you want to know all the sub-variables inside of an object, i
 
 ## b.
 
-Let's see if maximizing correlates with regret. Use `cor.test()` on those two variables, and report the Pearson's r and p-value.
+Let's see if the two maximizing scales are correlated (MTS_total and MS_total) Use `cor.test()` on those two variables, and report the Pearson's r and p-value.
 
 ```{r}
 # Code goes here
-
+cor_MS_MTS <- cor.test(IntroSurvey$MS_total, IntroSurvey$MTS_total)
 ```
 
 ```{r}
 # Code goes here
-
+cor_MS_MTS$Estimates
 ```
 
 ```{r}
 # Code goes here
-
+cor_MS_MTS$p.value
 ```
 
-Typically, maximizing correlates reasonably strongly with regret (r ~ 0.4). Does this appear to be the case in our dataset? 
+Typically, we'd expect these two scales to be very correlated. Does this appear to be the case in our dataset? 
 
 ## c.
 
-Let's see if maximizing correlates with various measures of course-selection behavior. Calculate the correlation and report the Pearson's r between `maxi_total` and each of the following variables:
+Let's see if maximizing correlates with various measures of course-selection behavior. Calculate the correlation and report the Pearson's r between `MS_total` and each of the following variables:
 
 `courses_enrolled`
 
@@ -354,39 +361,17 @@ Let's see if maximizing correlates with various measures of course-selection beh
 
 ```
 
-`points_enrolled`
-
-```{r}
-# Code goes here
-
-```
-
 ## d.
+Does maximizing correlate with self-reported satisfaction with courses?
+Pick one of the maximizer scales (MTS or MS) and test this question with cor.test(). 
 
-Is the regret score, as calculated by the Regret Scale, correlated with our students' self-reports of regret (`process_regret` and `outcome_regret`)?
-
-```{r}
-# Code goes here
-
-```
+`courses_satisfied`
 
 ```{r}
 # Code goes here
 
 ```
 
-What about `regret_general`?
+What about self-reported happiness with past courses? 
+Pick one of the maximizer scales and test this question with cor.test()
 
-```{r}
-# Code goes here
-
-```
-
-## e.
-
-Is the score on the Maximizing Scale related to the self-report of tendency to maximize (`maxi_general`)?
-
-```{r}
-# Code goes here
-
-```
