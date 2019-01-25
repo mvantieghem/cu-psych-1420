@@ -1,2 +1,9 @@
-id,MS1,MS2,MS3,MS4,MS5,MS6,MS7,MS8,MS9,MS10,MS11,MS12,MS13,Gender,Age,Major,School,Year,MTS1,MTS2,MTS3,MTS4,MTS5,MTS6,MTS7,MTS8,MTS9,courses_enrolled,courses_shopped,courses_considered,course_choice,courses_time_deciding,courses_title_impt,courses_info,courses_satisfied,courses_reviews,courses_happy,courses_best,courses_previous_happy,courses_syllabi_review
-1,5,5,5,5,5,5,5,5,5,5,5,5,5,Female,29,psychology,GS,Post-Bac,5,5,5,5,5,5,5,5,5,3,5,8,4,4,5,6,4,5,6,7,3,4
+id,MS1,MS2,MS3,MS4,MS5,MS6,MS7,MS8,MS9,MS10,MS11,MS12,MS13,Gender,Age,Major,School,Year,MTS1,MTS2,MTS3,MTS4,MTS5,MTS6,MTS7,MTS8,MTS9,courses_enrolled,courses_shopped,courses_considered,course_choice,courses_time_deciding,courses_title_impt,courses_info,courses_satisfied,courses_reviews,courses_happy,courses_best,courses_previous_happy,courses_syllabi_review,
+1,5,5,5,5,5,5,5,5,5,5,5,5,5,Female,29,psychology,GS,Post-Bac,5,5,5,5,5,5,5,5,5,3,5,3,3,3,3,3,4,3,3,3,3,3,3
+2,3,3,7,4,4,5,2,5,3,2,3,3,2,Male,18,psychology,CC,Freshman,2,5,3,3,3,5,5,5,5,5,5,5,5,5,5,5,3,5,5,5,5,5,5
+3,4,4,7,3,4,5,2,6,4,3,4,4,3,Male,20,psychology,CC,Junior,3,6,4,4,4,3,7,4,3,7,4,7,7,7,7,7,5,7,7,7,7,7,7
+4,3,5,6,3,4,5,2,7,5,4,4,5,4,Male,21,psychology,BC,Senior,4,7,5,4,5,4,7,3,4,7,3,7,7,7,7,7,7,7,7,7,7,7,7
+5,4,6,5,3,4,5,2,7,6,5,4,5,5,Female,22,psychology,CC,Senior,5,7,6,4,5,5,6,3,5,6,3,6,6,6,6,6,7,6,6,6,6,6,6
+6,5,7,4,3,4,5,3,7,7,6,4,5,6,Male,23,psychology,GS,Post-Bac,6,7,7,4,5,6,5,3,6,5,3,5,5,5,5,5,6,5,5,5,5,5,5
+7,6,7,4,3,4,4,4,7,7,7,5,5,7,Female,24,psychology,GS,Post-Bac,3,7,7,5,5,7,4,3,7,4,3,4,4,4,4,4,5,4,4,4,4,4,4
+,,,,,,,,,,,,,,,,,,,,,,,,7,4,3,7,4,3,4,4,4,4,4,4,4,4,4,4,4,4

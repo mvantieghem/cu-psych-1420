@@ -3,17 +3,17 @@ title: "Psych 1420, Assignment 2"
 author: "YOUR NAME HERE!"
 date: "DATE OF SUBMISSION HERE!"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: true
+    toc: yes
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 0.
-
-## How to use R Markdown documents
+# 0. How to use R Markdown documents
 
 This file is an R Markdown file. This is a special file that lets you write R code and run it, while also writing descriptive text (like this) about the code and analyses you have in between.
 
@@ -86,7 +86,7 @@ library(ggplot2)
 
 Now, we're ready to get started.
 
-# 1.
+# 1. Working directory
 
 Check your working directory using `getwd()`. If you opened RStudio via the R project file in the same directory that contains your datafile (`class_survey2_spring2019.csv`) and your R scripts, you should be in that folder now.
 
@@ -96,7 +96,7 @@ getwd()
 
 ```
 
-# 2.
+# 2. Reading Data
 
 Read in your data file using `read.csv("class_survey2_spring2019.csv")`, and assign it to the dataframe name `IntroSurvey`.
 
@@ -107,7 +107,7 @@ IntroSurvey <- read.csv("class_survey2_spring2019.csv")
 head(IntroSurvey)
 ```
 
-# 3.
+# 3. Exploring data
 
 Use the following exploration functions to check that the dataframe `IntroSurvey` read in correctly:
 
@@ -134,7 +134,7 @@ str(IntroSurvey)
 
 ```
 
-# 4.
+# 4. Calculating mean scores
 
 Calculating variables from the two Maximization scales:
 In this dataset, we now have the original Maximizer Scale (Schwartz et al., 2002) consisting of 13 items that we used last week. We will call this 'MS'. We also have a Maximizing Tendency Scale consisting of 9 items (Iyengar et al., 2006) that you completed in Survey2. We will call this survey 'MTS'. Today we will look at both to compare them. 
@@ -167,8 +167,6 @@ IntroSurvey$MTS_total <- rowMeans(cbind(IntroSurvey$MTS1,IntroSurvey$MTS2,
 ```
 
 
-# 5.
-
 Use `head()` to check that the following new variables are present in `IntroSurvey`:
 
 * `MS_total`
@@ -181,7 +179,7 @@ head(IntroSurvey$MS_total)
 head(IntroSurvey$MTS_total)
 ```
 
-# 6.
+# 6. Descriptive statistics
 
 Now we can start doing some real data analysis! For the purposes of getting practice in a variety of inferential statistics in R, we'll be running more exploratory tests than would normally be considered wise for a real study. We'll talk more about why this is a problem later in the semester, but hopefully in your stats class you talked about the dangers of running too many tests--i.e., alpha-inflation.
 
@@ -374,7 +372,7 @@ Pick one of the maximizer scales and test this question with cor.test()
 
 ```
 
-# d.Plotting correlations
+## d.Plotting correlations
 
 We can  use plot(var1, var2) to visualize the correlation between 2 variables.
 Use plot() to visualize any 3 of the prior correlations you tested above.
