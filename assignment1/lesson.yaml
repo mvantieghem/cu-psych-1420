@@ -250,15 +250,6 @@
   Hint: To output the full contents of the Age column to console, index the column from IntroSurvey by entering IntroSurvey$Age into console.
   
 - Class: text
-  Output: You should see that a couple values in IntroSurvey$Age are not numbers, but NA. This means that, for whatever reason in this data, some subjects have missing Age data. Rats! mean(), and many other functions, will not compute if they see missing values (NA). But you can tell them to ignore missing values and compute using the rest of the data. Inside of mean(), the argument na.rm = TRUE will tell mean() to throw out missing values and compute using the remaining data.'
-  
-- Class: cmd_question
-  Output: 'Add the argument " , na.rm = TRUE" (without the quotes) after the variable name within mean() to find the mean Age of students in the dataframe.'
-  CorrectAnswer: mean(IntroSurvey$Age, na.rm = TRUE)
-  AnswerTests: omnitest(correctExpr = 'mean(IntroSurvey$Age, na.rm = TRUE)')
-  Hint: 'Call the function mean() on the Age column in IntroSurvey by entering the following into console: mean(IntroSurvey$Age, na.rm = TRUE)'
-  
-- Class: text
   Output: 'We now know how to index columns in a dataframe using the $ operator. But what if we want to select just some rows in that column? To index partial columns, we will use hard brackets []. Inside the hard brackets, we will tell R which part of the column we want to index.'
 
 - Class: text
@@ -293,8 +284,8 @@
   
 - Class: cmd_question
   Output: 'Now, we''ll try another one. Use hard brackets and a logical statement to index the school affiliations of all female participants.'
-  CorrectAnswer: IntroSurvey$school[IntroSurvey$Gender == "Female"]
-  AnswerTests: omnitest(correctExpr = 'IntroSurvey$school[IntroSurvey$Gender == "Female"]')
+  CorrectAnswer: IntroSurvey$School[IntroSurvey$Gender == "Female"]
+  AnswerTests: omnitest(correctExpr = 'IntroSurvey$School[IntroSurvey$Gender == "Female"]')
   Hint: 'Call the school column of IntroSurvey, and then hard-bracket index it, with a logical statement on the inside selecting all values of the Gender column corresponding to females.'
 
 - Class: text
