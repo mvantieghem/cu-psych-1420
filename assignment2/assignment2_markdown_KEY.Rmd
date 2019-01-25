@@ -286,64 +286,46 @@ Explore at least **5** other variables that you think might have a relationship 
 
 ```
 
-# 7.
+# 7. Correlations
 
 Now that you have a sense for what the data show, let's look at how some of the variables relate to each other. First, some correlations.
 
-## a.
+## a. Maximizer scales
 
-Let's see if age correlates with Year in school. The function `cor.test()` allows us to put in two variables, see what their correlation is, and return a p-value for that correlation.
+Let's see if the two maximizing scales are correlated. The function `cor.test()` allows us to put in two variables, see what their correlation is, and return a p-value for that correlation.
 
 `cor.test()` allows you to run a Pearson, Kendall, or Spearman correlation, depending on what you tell it to do using the argument `method`. This time, since we just want to do a Pearson correlation, we'll use `method = "pearson"`.
 
-First, we'll save the contents of our correlation test into the variable `cor_age_school` so we can access its contents later. Then, we'll print `cor_age_school` to the console, so we can visually inspect the results of the correlation test.
-
-```{r}
-cor_age_school <- cor.test(IntroSurvey$Age, IntroSurvey$School, method = "pearson")
-
-cor_age_school
-```
-
-Above, you can see the r-value, p-value, and several other pieces of info about the correlation test. These statistics are actually saved as variables _inside of_ the correlation test object. To extract these statistics and report them, we can use the dollar sign `$` to index these statistics, similar to indexing columns in a dataframe.
-
-To index the Pearson's r for this test, we can look for the sub-variable called `estimate`:
-
-```{r}
-cor_age_school$estimate
-```
-
-And to index the p-value, we can call the sub-variable `p.value`:
-
-```{r}
-cor_age_school$p.value
-```
-
-Now, we can use these variable names to refer to the Pearson's r and p-value of this correlation test. You don't have to look at the numbers and copy them over!
-
-PS: In RStudio, if you want to know all the sub-variables inside of an object, if you just type the name of the object with a `$` after it, an auto-complete menu should pop up and you can use the up and down arrow keys to look through all the possible sub-variables.
-
-## b.
-
-Let's see if the two maximizing scales are correlated (MTS_total and MS_total) Use `cor.test()` on those two variables, and report the Pearson's r and p-value.
+First, we'll save the contents of our correlation test into the variable `cor_MS_MTS` so we can access its contents later. Then, we'll print `cor_MS_MTS` to the console, so we can visually inspect the results of the correlation test.
 
 ```{r}
 # Code goes here
 cor_MS_MTS <- cor.test(IntroSurvey$MS_total, IntroSurvey$MTS_total)
+cor_MS_MTS
 ```
+Above, you can see the r-value, p-value, and several other pieces of info about the correlation test. These statistics are actually saved as variables _inside of_ the correlation test object. To extract these statistics and report them, we can use the dollar sign `$` to index these statistics, similar to indexing columns in a dataframe.
+
+To index the Pearson's r for this test, we can look for the sub-variable called `estimate`:
+
 
 ```{r}
 # Code goes here
 cor_MS_MTS$Estimates
 ```
 
+And to index the p-value, we can call the sub-variable `p.value`:
+
+
 ```{r}
 # Code goes here
 cor_MS_MTS$p.value
 ```
 
-Typically, we'd expect these two scales to be very correlated. Does this appear to be the case in our dataset? 
+Now, we can use these variable names to refer to the Pearson's r and p-value of this correlation test. You don't have to look at the numbers and copy them over!
 
-## c.
+PS: In RStudio, if you want to know all the sub-variables inside of an object, if you just type the name of the object with a `$` after it, an auto-complete menu should pop up and you can use the up and down arrow keys to look through all the possible sub-variables.
+
+## b. Maximizing and course selection
 
 Let's see if maximizing correlates with various measures of course-selection behavior. Calculate the correlation and report the Pearson's r between `MS_total` and each of the following variables:
 
@@ -361,7 +343,16 @@ Let's see if maximizing correlates with various measures of course-selection beh
 
 ```
 
-## d.
+
+`courses_considered`
+
+```{r}
+# Code goes here
+
+```
+
+## c. Maximizing and satisfaction
+
 Does maximizing correlate with self-reported satisfaction with courses?
 Pick one of the maximizer scales (MTS or MS) and test this question with cor.test(). 
 
@@ -375,3 +366,32 @@ Pick one of the maximizer scales (MTS or MS) and test this question with cor.tes
 What about self-reported happiness with past courses? 
 Pick one of the maximizer scales and test this question with cor.test()
 
+
+`courses_previous_happy`
+
+```{r}
+# Code goes here
+
+```
+
+# d.Plotting correlations
+
+We can  use plot(var1, var2) to visualize the correlation between 2 variables.
+Use plot() to visualize any 3 of the prior correlations you tested above.
+
+```{r}
+plot(IntroSurvey$MS_total, IntroSurvey$MTS_total)
+
+```
+
+
+```{r}
+plot(IntroSurvey$MS_total, IntroSurvey$courses_satisfied)
+
+```
+
+
+```{r}
+plot(IntroSurvey$MS_total, IntroSurvey$courses_enrolled)
+
+```
