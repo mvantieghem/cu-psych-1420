@@ -3,7 +3,9 @@
 # Then copy these lines of code into your console and follow the instructions.
 
 install.packages("swirlify")
+library(swirlify)
 swirlify::demo_lesson()
+
 
 # If you don't reach the end of the assignment before the end of lab, you can exit swirl by typing:
 bye() 
