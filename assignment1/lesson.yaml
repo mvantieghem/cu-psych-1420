@@ -49,7 +49,7 @@
   Hint: 'Copy the following command and press Enter to run: IntroSurvey <- read.csv("class_survey1_spring2019.csv")'
 
 - Class: text
-  Output: 'We just read in the data saved in classdata_2018.csv, and used the left arrow <- to assign that data to the label IntroSurvey. R is case sensitive, so the label IntroSurvey is not the same as the label introsurvey. Our convention will be to label data frames with capital letters, and variables in lowercase.'
+  Output: 'We just read in the data saved in class_survey1_spring2019.csv, and used the left arrow <- to assign that data to the label IntroSurvey. R is case sensitive, so the label IntroSurvey is not the same as the label introsurvey. Our convention will be to label data frames with capital letters, and variables in lowercase.'
 
 - Class: text
   Output: 'Next, we''ll learn about functions that help you explore your data. Sometimes, you''ll use these to make sure your data read in correctly, and sometimes you''ll use these simply to inspect your data so you know what''s in it.'
@@ -232,7 +232,7 @@
   Hint: 'Enter summary(IntroSurvey$...), where ... is the name of your factor column in IntroSurvey, into console and press Enter.  If you are not sure which columns are factor, enter str(IntroSurvey) and inspect the output for columns that say "Factor".'
   
 - Class: text
-  Output: 'Now, let''s find specific descriptive statistics about specific columns in our data.'
+  Output: 'Now, let''s calculate means for specific columns in our data.'
 
 - Class: cmd_question
   Output: 'Use the function mean() to find the mean Age of students in the dataframe.'

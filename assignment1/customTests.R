@@ -54,7 +54,7 @@ notify <- function() {
     address <- "mrv2115@columbia.edu"
   } else if (e$val == "Zach") {
     address <- "zjb2108@columbia.edu"
-  } else if (e$val == "basak") {
+  } else if (e$val == "Basak") {
     address <- "ba2496@columbia.edu"
   }
   
