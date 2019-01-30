@@ -390,6 +390,7 @@ plot(IntroSurvey$MS_total, IntroSurvey$courses_satisfied)
 
 
 ```{r}
+pdf(my_correlation.pdf)
 plot(IntroSurvey$MS_total, IntroSurvey$courses_enrolled)
-
+dev.off()
 ```
