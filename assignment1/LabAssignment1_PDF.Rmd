@@ -1,0 +1,301 @@
+---
+title: "Psych 1420 Lab Assignment 1"
+author: "Michelle.VanTieghem"
+date: "1/29/2019"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+---
+
+Welcome to R! In this first assignment, we''ll be learning about how to navigate R (and RStudio.) You can use R to do spreadsheet-style table manipulation (like Excel), as well as statistics (like SPSS). While it takes a little bit more time to get the hang of using R, we hope you''ll find it rewarding, and choose to use it in your future research!
+
+ In this assignment, we will learn how to load in a data file, inspect the data, and do some brief calculations on that data.
+  
+## 1. R environment
+First we want to tell R where to find the data files we''ll be using.
+  
+Ask R "what is the current working directory?" by calling the function getwd()
+```{r}
+getwd()
+```
+
+'You should see a file path as the output of getwd(). This tells you the folder on your computer that R is currently "inside".'
+
+Before working with data, we need to read it into R''s environment. First, make sure you know where the dataset is saved. It should be in the your current working directory, and saved in .csv format.'
+  
+ Ask R to show you all the files in your current working directory by calling the function list.files()
+```{r}
+list.files()
+```
+
+'You should see a series of file names in the output. Make sure there is a file that ends in .csv, as that''s the data file we''ll be loading.'
+
+
+'We''ll use the function read.csv() to read data from this CSV file into R. We need to tell read.csv() which file we want to read data from. We will do this by putting the name of the file inside the parentheses of read.csv() so that it knows where to look for the data.'
+
+'We also need to tell R to store the info from the file in an R object so we can work with the data. We''ll do this using the left-arrow operator, <- , to take the data on the RIGHT side, and save it into the label name on the LEFT side. Then, whenever we want to access the data, we just need to tell R the label name and the data will be there.'
+
+Read this CSV data file into R by entering the following command: IntroSurvey <- read.csv("class_survey1_spring2019.csv")'
+```{r}
+IntroSurvey <- read.csv("../class_survey1_spring2019.csv")
+```
+
+  'We just read in the data saved in class_survey1_spring2019.csv, and used the left arrow <- to assign that data to the label IntroSurvey. R is case sensitive, so the label IntroSurvey is not the same as the label introsurvey. Our convention will be to label data frames with capital letters, and variables in lowercase.'
+
+## 2. Exploring dataframes
+
+  'Next, we''ll learn about functions that help you explore your data. Sometimes, you''ll use these to make sure your data read in correctly, and sometimes you''ll use these simply to inspect your data so you know what''s in it.'
+
+
+  'The first exploring function you''ll use is str(). str() tells you the following things about an object:'
+  
+
+  'the type of object that IntroSurvey is, the number of observations and number of variables (dimensions) of IntroSurvey, a list of each variable and its class (interval, factor, numeric, etc.), and for each variable, a list of all values'
+
+'Enter the following command and inspect the str(IntroSurvey)'
+```{r}
+str(IntroSurvey)
+```
+
+  'Now, here are some questions about what str() tells you.'
+
+
+  Does str() tell you the names of the columns in a dataframe?
+  CorrectAnswer: Yes
+  
+
+  Does str() tell you the data types of the columns in a dataframe?
+  CorrectAnswer: Yes
+  
+
+  Does str() tell you how many rows are in a dataframe?
+  CorrectAnswer: Yes
+
+
+  'The next exploring function you''ll use is head(). head() prints out the first few rows of a dataframe, so you can peek at what the data look like.'
+  
+
+  'Enter the following command and inspect the head(IntroSurvey)'
+```{r}
+head(IntroSurvey)
+```
+
+  'Now, here are some questions about what head() tells you.'
+
+
+  Does head() tell you the names of the columns in a dataframe?
+
+  CorrectAnswer: Yes
+
+  Does head() tell you the data types of the columns in a dataframe?
+  CorrectAnswer: No
+
+
+  Does head() tell you how many rows are in a dataframe?
+  CorrectAnswer: No
+
+
+  Does head() tell you every entry in the first row of a dataframe?
+  CorrectAnswer: Yes
+
+
+  'The last exploring function you''ll learn about today is summary(). summary() prints out summarizing info about each column of a dataframe.'
+
+
+  'Enter the following command and inspect the summary(IntroSurvey)'
+```{r}
+summary(IntroSurvey)
+```
+  'Now, here are some questions about what summary() tells you.'
+
+
+  Does summary() tell you the names of the columns in a dataframe?
+  CorrectAnswer: Yes
+
+
+  Does summary() tell you the data types of the columns in a dataframe?
+  CorrectAnswer: No
+
+
+  Does summary() tell you how many rows are in a dataframe?
+  CorrectAnswer: No
+
+
+  Does summary() tell you every entry in the first row of a dataframe?
+  CorrectAnswer: No
+
+
+  Does summary() tell you the mean value of numeric columns in a dataframe?
+  CorrectAnswer: Yes
+
+## 3. Accessing variables in dataframe
+  'Now that we''ve explored the whole dataframe IntroSurvey, let''s look more closely at some of the columns contained in IntroSurvey.'
+
+
+  'Accessing individual pieces of a larger dataframe, whether it be rows, columns, or single values, is called INDEXING. To index a column in a dataframe, we can''t just type the name of the column. We need to pull the column out of the dataframe it''s in, using a $.'
+
+
+  'For example, to look at the Age column in IntroSurvey, we need to type the following: IntroSurvey$Age . In R, you use the $ as you would the / for webpAges within a website, or file paths on a computer. It allows you to index a column that''s stored inside of a dataframe.'
+
+
+  'Enter the following command and inspect the IntroSurvey$Age'
+```{r}
+IntroSurvey$Age
+```
+
+  'Index any column in IntroSurvey using the dollar sign $ operator.'
+```{r}
+'IntroSurvey$id'
+```
+
+  Hint: 'Enter IntroSurvey$ with the name of any column in IntroSurvey after the $'
+
+
+  Now, use any of the exploration functions you've found so far to identify two numeric variables in this data.
+
+
+  'Index a numeric column in IntroSurvey using the dollar sign $ operator.'
+```{r}
+IntroSurvey$MS1
+```
+  Hint: 'Enter IntroSurvey$ with the name of any numeric column in IntroSurvey after the $. If you are not sure which columns are numeric, enter str(IntroSurvey) and inspect the output for columns that say "int" (for integer) or "num" (for numeric).'
+
+
+  'Index another numeric column in IntroSurvey using the dollar sign $ operator.'
+```{r}
+IntroSurvey$MS2
+```
+
+  Hint: 'Enter IntroSurvey$ with the name of any numeric column in IntroSurvey after the $. If you are not sure which columns are numeric, enter str(IntroSurvey) and inspect the output for columns that say "int" (for integer) or "num" (for numeric).'
+
+
+  'Now, we''ll quickly visualize these two numeric columns. Visualizing data in a graph is a great way to quickly inspect it.'
+  
+
+  'Create a quick histogram of your first numeric column in IntroSurvey using hist().'
+```{r}
+hist(IntroSurvey$Age)
+```
+
+
+  'Create a quick histogram of your second numeric column in IntroSurvey using hist().'
+```{r}
+hist(IntroSurvey$Age)
+```
+Hint: 'Enter hist(IntroSurvey$...), where ... is the name of your numeric column in IntroSurvey, into console and press Enter.'
+  
+
+  'Graphical exploration is one tool you can use to explore the content of specific columns in a dataframe, but it''s not the only one. The function summary(), that we used before to explore our whole dataframe, also works on specific columns.'
+
+
+  'Call summary() on a numeric column in IntroSurvey and inspect the output.'
+```{r}
+summary(IntroSurvey$Age)
+```
+
+
+  'Call summary() on a factor column in IntroSurvey and inspect the output.'
+```{r}
+summary(IntroSurvey$Age)
+```
+
+
+  'Now, let''s calculate means for specific columns in our data.'
+
+
+  'Use the function mean() to find the mean Age of students in the dataframe.'
+```{r}
+mean(IntroSurvey$Age)
+```
+
+  'We now know how to index columns in a dataframe using the $ operator. But what if we want to select just some rows in that column? To index partial columns, we will use hard brackets []. Inside the hard brackets, we will tell R which part of the column we want to index.'
+
+## 4. Indexing data
+
+  'Usually, when we want to index partial dataframe columns, we only want parts of the column that satisfy some conditions. For example, what if we want to index only the class years for all participants who are older than 21 years? We would use the command IntroSurvey$class[IntroSurvey$Age > 21] . Inside the hard brackets, we have entered a logical statement. This works because in our dataframe, each row contains the data for a single participant. This means that every value of "class" belongs to the same participant as the value of "Age" in the corresponding row of the dataframe. Thus, we can index partial dataframe columns using logical statements about the values of other columns.'
+  
+
+  'For logical statements on numeric columns, we can use the following operators:'
+
+
+  '== (is equal to), != (is not equal to)'
+
+
+  '> (greater than), >= (greater than or equal to)'
+  
+
+  '< (less than), <= (less than or equal to)'
+
+
+  'For logical statements on text columns, we can use the following operators:'
+
+
+  '== , != . These will check if the string (piece of character data) on the left is equal to the string on the right or not.'
+  
+
+  'For example, IntroSurvey$Major[IntroSurvey$Gender == "Female"] will index all the majors for female-identified students. Notice that for character data, you need to have quotation marks around the data (e.g. "F") so that R knows that you''re referring to character data.'
+
+
+  'Enter IntroSurvey$Major[IntroSurvey$Gender == "Female"] to see the majors of your female-identifying classmates.'
+```{r}
+IntroSurvey$Major[IntroSurvey$Gender == "Female"]
+```
+
+  'Now, we''ll try another one. Use hard brackets and a logical statement to index the school affiliations of all female participants.'
+```{r}
+IntroSurvey$School[IntroSurvey$Gender == "Female"]
+```
+
+  'Now, let''s calculate some descriptive statistics on our data! For the next set of questions, each question will have two parts. The first part will ask you to type in the correct code to calculate a particular descriptive statistic. The second part will ask you to type in the correct value of the descriptive statistic. You can enter the number that is output by the answer to the first part of the question to answer the second part of the question.'
+  
+
+  'Enter a command to calculate the mean Age of our participants.'
+```{r}
+mean(IntroSurvey$Age)
+```
+
+  'Enter a command that tells you which year the participants are in'
+```{r}
+summary(IntroSurvey$Year)
+```
+
+  'Enter a command to calculate the mean Age of the juniors.'
+```{r}
+mean(IntroSurvey$Age[IntroSurvey$Year == "Junior"])
+```
+
+  'For the last part of this assignment, we''ll create a new variable. Sometimes during data analysis, we might want to combine a group of two or more columns in a meaningful way. For example, if we had student''s scores for three exams listed in three columns, we might want to have a new column with each student''s test average.' 
+  
+
+  'In our current data, we are interested in the "Maximizer Scale" (Schwartz et al. 2002) which we will be using in future labs. We will make a new variable that represents the average scores of the 13 individual questions (e.g. "MS1, MS2, MS3")'
+  
+
+  'To get average Maximizer scores, we can use the function rowMeans() which calculates the mean value for every row of a dataframe. Then, we''ll assign the output of rowMeans() to a new column in IntroSurvey'
+  
+
+  'Run the following command to calculate the mean Maximizer Scale score from the 13 questions: IntroSurvey$MS_total <- rowMeans(cbind(IntroSurvey$MS1, IntroSurvey$MS2, IntroSurvey$MS3, IntroSurvey$MS4, IntroSurvey$MS5, IntroSurvey$MS6, IntroSurvey$MS7, IntroSurvey$MS8, IntroSurvey$MS9, IntroSurvey$MS10, IntroSurvey$MS11, IntroSurvey$MS12, IntroSurvey$MS13))'
+  
+```{r}
+IntroSurvey$MS_total <- rowMeans(cbind(IntroSurvey$MS1, IntroSurvey$MS2,
+                                       IntroSurvey$MS3, IntroSurvey$MS4,
+                                       IntroSurvey$MS5, IntroSurvey$MS6,
+                                       IntroSurvey$MS7, IntroSurvey$MS8,
+                                       IntroSurvey$MS9, IntroSurvey$MS10,
+                                       IntroSurvey$MS11, IntroSurvey$MS12,
+                                       IntroSurvey$MS13))
+```
+
+  'Now names() on the IntroSurvey dataframe, which provides the names of each variable in the dataset. We can check that the new variable is there. MS_total should show up in the names.'
+```{r}
+names(IntroSurvey)
+```
+
+```{r}
+mean(IntroSurvey$MS_total)
+```
