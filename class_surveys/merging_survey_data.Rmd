@@ -1,0 +1,107 @@
+---
+title: "Untitled"
+author: "Michelle.VanTieghem"
+date: "2/3/2019"
+output: html_document
+---
+
+```{r}
+template <- read.csv("../assignment2revised/class_survey2_spring2019.csv")
+var_names <- names(template)[1:43]
+length(var_names)
+
+names_MS <- var_names[7:19]
+
+names_courses <- var_names[23:34]
+names_MTS <- var_names[35:43]
+
+```
+
+
+```{r}
+survey1 <- read.csv("survey1.csv")
+survey2 <- read.csv("survey2.csv")
+
+names(survey1)[2] <- "UNI"
+names(survey2)[2] <- "UNI"
+
+combined <- merge(survey1, survey2, by = "UNI")
+names(combined)
+ncol(combined)
+
+# remove time stamp and uni 
+library(tidyverse)
+combined2 <- combined %>%
+  select(-starts_with("Timestamp"), -starts_with ("UNI"),
+         -starts_with("Please"))
+ncol(combined2)
+names(combined2)[1:13] <- names_MS
+
+names(combined2)[19] <- "Courses_enrolled"
+names(combined2)[20] <- "Courses_shopped"
+names(combined2)[21] <- "Courses_considered"
+names(combined2)[22:33] <- names_courses
+names(combined2)[34:42] <- names_MTS
+
+```
+
+# make summary variables 
+
+Happy: Course selection satisfaction 
+  = mean Happy1 & Happy2 
+```{r}
+combined2$Happy <- rowMeans(cbind(combined2$Happy1, combined2$Happy2))
+
+```
+  
+External: Use of external resources for decision-making process
+  = mean External1 & External2 
+```{r}
+combined2$External <- rowMeans(cbind(combined2$External1, combined2$External2))
+
+```
+
+Time: Time spent deciding
+  = mean Time1 & (8-Time2)
+```{r}
+time2_reverse <- 8-combined2$Time2
+combined2$Time <- rowMeans(cbind(combined2$Time1,time2_reverse))
+
+```
+
+Info: Collecting course information 
+  = mean Info1 & Info2 
+```{r}
+combined2$Info <- rowMeans(cbind(combined2$Info1, combined2$Info2))
+
+```
+
+
+ActvNum: Number of courses a student attended, but did not enroll in. 
+  = Course2 – Course1 
+```{r}
+combined2$ActvNum <- rowMeans(cbind(combined2$Courses_shopped, combined2$Courses_enrolled))
+
+```
+
+PssvNum: Number of courses a student considered, but did not enroll in.
+  = Course3 – Course1
+
+
+
+```{r}
+combined2PssvNum <- rowMeans(cbind(combined2$Courses_considered, combined2$Courses_enrolled))
+
+```
+
+# add ID 
+```{r}
+
+combined2$ID <- (1:nrow(combined2))
+```
+
+# save 
+```{r}
+write.csv(combined2, "class_survey2_spring2019.csv")
+
+```
